@@ -1409,11 +1409,25 @@
         fecha: serverTimestamp()
       });
 
-      alert(
-        "💗 ¡Tu solicitud fue enviada correctamente! " +
-        "Pronto nos pondremos en contacto contigo."
+            const enviarImagen = confirm(
+        "💗 ¡Tu solicitud fue enviada correctamente!\n\n" +
+        "📷 Si deseas enviar una imagen de referencia, " +
+        "puedes mandarla ahora por WhatsApp."
       );
 
+      if (enviarImagen) {
+        const mensaje = encodeURIComponent(
+          "Hola 🌷 Acabo de enviar una solicitud personalizada en Ramitos de Pipa. " +
+          "Te envío mi imagen de referencia. 💗"
+        );
+
+        window.open(
+          "https://wa.me/50685053551?text=" + mensaje,
+          "_blank"
+        );
+      }
+
+      form.reset();
       form.reset();
 
     } catch (error) {
