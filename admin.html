@@ -251,31 +251,211 @@
 
   <script>
 
-    function agregarProducto() {
-      alert(
-        "🌷 En el siguiente paso podremos agregar " +
-        "un nuevo producto."
+    <script type="module">
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+  import {
+    getFirestore,
+    collection,
+    getDocs
+  } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyA0redvM8Zg_UwUmhxvgt2zMpWFXwxMNK4",
+    authDomain: "ramitos-de-pipa.firebaseapp.com",
+    projectId: "ramitos-de-pipa",
+    storageBucket: "ramitos-de-pipa.firebasestorage.app",
+    messagingSenderId: "628847901109",
+    appId: "1:628847901109:web:4fb8b309b0eac146fc41fc",
+    measurementId: "G-40G6869742"
+  };
+
+
+  const app = initializeApp(firebaseConfig);
+
+  const db = getFirestore(app);
+
+  const productsContainer =
+    document.getElementById("products");
+
+
+  let productos = [];
+
+
+  async function cargarProductos() {
+
+    try {
+
+      const snapshot =
+        await getDocs(
+          collection(db, "productos")
+        );
+
+
+      productos = [];
+
+      snapshot.forEach(function(doc) {
+
+        productos.push({
+          id: doc.id,
+          ...doc.data()
+        });
+
+      });
+
+
+      mostrarProductos("todos");
+
+    } catch (error) {
+
+      console.error(
+        "Error al cargar productos:",
+        error
       );
+
+      productsContainer.innerHTML = `
+        <div class="empty">
+          <h3>😭 No pudimos cargar los productos</h3>
+          <p>
+            Revisa la conexión con Firebase.
+          </p>
+        </div>
+      `;
+
     }
 
-    function mostrarCategoria(categoria, boton) {
+  }
+
+
+  function mostrarProductos(categoria) {
+
+    productsContainer.innerHTML = "";
+
+
+    let lista = productos;
+
+
+    if (categoria !== "todos") {
+
+      lista = productos.filter(function(producto) {
+
+        return producto.categoria === categoria;
+
+      });
+
+    }
+
+
+    if (lista.length === 0) {
+
+      productsContainer.innerHTML = `
+        <div class="empty">
+          <h3>🌷 No hay productos en esta categoría</h3>
+          <p>
+            Puedes agregar uno desde el botón
+            "Agregar producto".
+          </p>
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    lista.forEach(function(producto) {
+
+      const tarjeta =
+        document.createElement("div");
+
+      tarjeta.className = "product-card";
+
+
+      tarjeta.innerHTML = `
+
+        <div class="product-image">
+          🌷
+        </div>
+
+        <h3>
+          ${producto.nombre || "Sin nombre"}
+        </h3>
+
+        <p>
+          ${producto.descripcion || "Sin descripción"}
+        </p>
+
+        <p>
+          💰 ₡${producto.precio || 0}
+        </p>
+
+        <span class="status">
+          ${producto.disponible ? "Disponible" : "No disponible"}
+        </span>
+
+        <div class="actions">
+
+          <button class="edit">
+            ✏️ Editar
+          </button>
+
+          <button class="hide">
+            👁️ Ocultar
+          </button>
+
+          <button class="delete">
+            🗑️ Eliminar
+          </button>
+
+        </div>
+      `;
+
+
+      productsContainer.appendChild(tarjeta);
+
+    });
+
+  }
+
+
+  window.mostrarCategoria =
+    function(categoria, boton) {
 
       const botones =
-        document.querySelectorAll(".category-button");
+        document.querySelectorAll(
+          ".category-button"
+        );
 
       botones.forEach(function(b) {
+
         b.classList.remove("active");
+
       });
+
 
       boton.classList.add("active");
 
-      alert(
-        "🌷 Categoría seleccionada: " +
-        categoria
-      );
-    }
+      mostrarProductos(categoria);
 
-  </script>
+    };
+
+
+  window.agregarProducto =
+    function() {
+
+      alert(
+        "🌷 El formulario para agregar productos " +
+        "lo construiremos en el siguiente paso."
+      );
+
+    };
+
+
+  cargarProductos();
+
+</script>
 
 </body>
 </html>
