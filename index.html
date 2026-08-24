@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ramitos de Pipa 🌷</title>
+
+  <meta
+    name="description"
+    content="Flores de limpiapipas hechas a mano con mucho amor."
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      background: #fff8fb;
+      color: #5b4050;
+      line-height: 1.6;
+    }
+
+    /* ---------- NAVBAR ---------- */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 248, 251, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #f5d6e2;
+      padding: 15px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #d85b88;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #714c5d;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #d85b88;
+    }
+
+    /* ---------- HERO ---------- */
+
+    .hero {
+      min-height: 82vh;
+      padding: 80px 7%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background:
+        radial-gradient(circle at 15% 20%, #ffdce9 0, transparent 25%),
+        radial-gradient(circle at 85% 80%, #ffe8f0 0, transparent 25%),
+        #fff8fb;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .flower {
+      font-size: 4rem;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: #d84f83;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .hero h2 {
+      font-size: 1.5rem;
+      color: #795365;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: auto;
+      font-size: 1.1rem;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 14px 28px;
+      border-radius: 40px;
+      background: #d85b88;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 8px 20px rgba(216, 91, 136, 0.25);
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      background: #c74776;
+    }
+
+    /* ---------- SECTIONS ---------- */
+
+    section {
+      padding: 75px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-family: Georgia, serif;
+      font-size: 2.5rem;
+      color: #d84f83;
+    }
+
+    .section-title p {
+      margin-top: 8px;
+      color: #876575;
+    }
+
+    /* ---------- CATEGORIES ---------- */
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .category {
+      background: white;
+      padding: 30px 20px;
+      border-radius: 25px;
+      text-align: center;
+      border: 1px solid #f3d8e3;
+      transition: 0.3s;
+    }
+
+    .category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(150, 80, 110, 0.1);
+    }
+
+    .category span {
+      display: block;
+      font-size: 2.7rem;
+      margin-bottom: 10px;
+    }
+
+    .category h3 {
+      color: #70495a;
+    }
+
+    /* ---------- PRODUCTS ---------- */
+
+    #catalogo {
+      background: #fff0f6;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .product {
+      background: white;
+      border-radius: 25px;
+      overflow: hidden;
+      border: 1px solid #f1d5e1;
+      box-shadow: 0 5px 18px rgba(120, 70, 90, 0.07);
+      transition: 0.3s;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-image {
+      height: 230px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ffe1ed, #fff3f8);
+      font-size: 5rem;
+    }
+
+    .product-info {
+      padding: 22px;
+    }
+
+    .product-info h3 {
+      color: #70495a;
+      margin-bottom: 5px;
+    }
+
+    .product-info p {
+      color: #8a6a78;
+      font-size: 0.95rem;
+    }
+
+    .price {
+      display: block;
+      margin-top: 12px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #d84f83;
+    }
+
+    /* ---------- PERSONALIZADOS ---------- */
+
+    .custom {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 45px;
+      border-radius: 30px;
+      border: 1px solid #f0d4df;
+      box-shadow: 0 10px 30px rgba(120, 70, 90, 0.08);
+      text-align: center;
+    }
+
+    .custom-icon {
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+    }
+
+    .custom h2 {
+      font-family: Georgia, serif;
+      color: #d84f83;
+      margin-bottom: 12px;
+    }
+
+    .custom p {
+      max-width: 650px;
+      margin: auto;
+      color: #806271;
+    }
+
+    /* ---------- FORM ---------- */
+
+    form {
+      max-width: 700px;
+      margin: 35px auto 0;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #70495a;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 13px 15px;
+      border: 1px solid #e8cbd8;
+      border-radius: 14px;
+      background: #fffafd;
+      font-family: inherit;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #d85b88;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .submit-button {
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      margin-top: 25px;
+      padding: 15px;
+      border-radius: 30px;
+      background: #d85b88;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .submit-button:hover {
+      background: #c74776;
+    }
+
+    /* ---------- ABOUT ---------- */
+
+    .about {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about p {
+      font-size: 1.08rem;
+      color: #765968;
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      background: #5b4050;
+      color: white;
+      text-align: center;
+      padding: 35px 20px;
+    }
+
+    footer h3 {
+      font-family: Georgia, serif;
+      font-size: 1.7rem;
+      margin-bottom: 8px;
+    }
+
+    footer a {
+      color: #ffd7e7;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* ---------- MOBILE ---------- */
+
+    @media (max-width: 650px) {
+
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav a {
+        margin: 0 7px;
+        font-size: 0.9rem;
+      }
+
+      .hero {
+        min-height: 75vh;
+        padding: 60px 6%;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+
+      section {
+        padding: 55px 6%;
+      }
+
+      .custom {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVEGACIÓN -->
+
+  <nav>
+    <div class="logo">🌷 Ramitos de Pipa</div>
+
+    <div>
+      <a href="#inicio">Inicio</a>
+      <a href="#catalogo">Flores</a>
+      <a href="#personalizados">Personalizados</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+
+
+  <!-- INICIO -->
+
+  <section class="hero" id="inicio">
+
+    <div class="hero-content">
+
+      <div class="flower">🌷💗🌸</div>
+
+      <h1>Ramitos de Pipa</h1>
+
+      <h2>Flores hechas a mano con mucho amor.</h2>
+
+      <p>
+        Detalles especiales que puedes regalar,
+        conservar y recordar para siempre.
+      </p>
+
+      <a class="button" href="#catalogo">
+        🌸 Ver nuestros ramitos
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- CATEGORÍAS -->
+
+  <section>
+
+    <div class="section-title">
+
+      <h2>¿Qué estás buscando? 🌷</h2>
+
+      <p>
+        Elige el detalle perfecto para esa persona especial.
+      </p>
+
+    </div>
+
+    <div class="categories">
+
+      <div class="category">
+        <span>🌷</span>
+        <h3>Flores</h3>
+        <p>Flores hechas a mano.</p>
+      </div>
+
+      <div class="category">
+        <span>💐</span>
+        <h3>Ramos</h3>
+        <p>Ramitos para regalar.</p>
+      </div>
+
+      <div class="category">
+        <span>🪴</span>
+        <h3>Macetas</h3>
+        <p>Arreglos que duran para siempre.</p>
+      </div>
+
+      <div class="category">
+        <span>✨</span>
+        <h3>Personalizados</h3>
+        <p>Cuéntanos tu idea.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CATÁLOGO -->
+
+  <section id="catalogo">
+
+    <div class="section-title">
+
+      <h2>Nuestros ramitos 💐</h2>
+
+      <p>
+        Algunos de nuestros trabajos hechos a mano.
+      </p>
+
+    </div>
+
+    <div class="products">
+
+      <div class="product">
+
+        <div class="product-image">
+          🌷
+        </div>
+
+        <div class="product-info">
+
+          <h3>Ramito de flores</h3>
+
+          <p>
+            Un detalle bonito para cualquier ocasión.
+          </p>
+
+          <span class="price">₡7.500</span>
+
+        </div>
+
+      </div>
+
+
+      <div class="product">
+
+        <div class="product-image">
+          🌸
+        </div>
+
+        <div class="product-info">
+
+          <h3>Ramo de flores</h3>
+
+          <p>
+            Flores de limpiapipas hechas completamente a mano.
+          </p>
+
+          <span class="price">₡6.500</span>
+
+        </div>
+
+      </div>
+
+
+      <div class="product">
+
+        <div class="product-image">
+          🌻
+        </div>
+
+        <div class="product-info">
+
+          <h3>Ramo de girasoles</h3>
+
+          <p>
+            Un pequeño detalle lleno de alegría.
+          </p>
+
+          <span class="price">₡6.500</span>
+
+        </div>
+
+      </div>
+
+
+      <div class="product">
+
+        <div class="product-image">
+          💙🌼
+        </div>
+
+        <div class="product-info">
+
+          <h3>Ramo azul</h3>
+
+          <p>
+            Un arreglo especial hecho a mano.
+          </p>
+
+          <span class="price">Consultar</span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PERSONALIZADOS -->
+
+  <section id="personalizados">
+
+    <div class="custom">
+
+      <div class="custom-icon">🎀✨🌷</div>
+
+      <h2>¿Quieres algo personalizado?</h2>
+
+      <p>
+        Cuéntanos cómo imaginas tu ramito.
+        Puedes explicarnos tu idea y próximamente
+        también podrás enviarnos una foto de referencia.
+      </p>
+
+
+      <form>
+
+        <label for="nombre">
+          Tu nombre
+        </label>
+
+        <input
+          type="text"
+          id="nombre"
+          placeholder="Escribe tu nombre"
+        >
+
+
+        <label for="telefono">
+          Número de teléfono
+        </label>
+
+        <input
+          type="tel"
+          id="telefono"
+          placeholder="Ej. 8888-8888"
+        >
+
+
+        <label for="tipo">
+          ¿Qué te gustaría?
+        </label>
+
+        <select id="tipo">
+
+          <option value="">
+            Selecciona una opción
+          </option>
+
+          <option>
+            Ramo
+          </option>
+
+          <option>
+            Maceta
+          </option>
+
+          <option>
+            Flores individuales
+          </option>
+
+          <option>
+            Otro
+          </option>
+
+        </select>
+
+
+        <label for="idea">
+          Cuéntanos tu idea
+        </label>
+
+        <textarea
+          id="idea"
+          placeholder="Ej. Quiero un ramo rosado con flores blancas..."
+        ></textarea>
+
+
+        <button
+          type="button"
+          class="submit-button"
+          onclick="alert('💗 ¡Gracias! Pronto conectaremos este formulario con WhatsApp para enviar tu pedido.')"
+        >
+          💌 Enviar solicitud
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+  <!-- SOBRE NOSOTROS -->
+
+  <section>
+
+    <div class="about">
+
+      <div class="section-title">
+
+        <h2>Hecho con amor 💗</h2>
+
+      </div>
+
+      <p>
+        En Ramitos de Pipa creamos flores de limpiapipas
+        hechas completamente a mano.
+        Cada ramito es elaborado con dedicación,
+        cuidado y mucho cariño para convertirlo
+        en un detalle especial.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACTO -->
+
+  <section id="contacto">
+
+    <div class="section-title">
+
+      <h2>¿Quieres hacer un pedido? 🌷</h2>
+
+      <p>
+        Escríbenos y cuéntanos qué detalle tienes en mente.
+      </p>
+
+      <a
+        class="button"
+        href="https://www.instagram.com/petalitosdepipa/"
+        target="_blank"
+      >
+        📸 Instagram: @petalitosdepipa
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- PIE DE PÁGINA -->
+
+  <footer>
+
+    <h3>🌷 Ramitos de Pipa</h3>
+
+    <p>
+      Flores hechas a mano con mucho amor. 💗
+    </p>
+
+    <p>
+      © 2026 Ramitos de Pipa
+    </p>
+
+  </footer>
+
+</body>
+</html>
