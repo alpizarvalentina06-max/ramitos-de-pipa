@@ -728,7 +728,142 @@
       }
 
     }
+/* =========================
+   VENTANA DE PRODUCTO
+========================= */
 
+.product-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: rgba(50, 30, 40, 0.65);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.product-modal.active {
+  display: flex;
+}
+
+.product-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 30px;
+  box-shadow: 0 20px 60px rgba(80, 40, 60, 0.25);
+  overflow: hidden;
+  animation: modalEntrada 0.25s ease;
+}
+
+@keyframes modalEntrada {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.product-modal-image {
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(
+    135deg,
+    #ffe1ed,
+    #fff3f8
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-modal-info {
+  padding: 28px;
+}
+
+.product-modal-info h2 {
+  color: #d34e80;
+  font-family: Georgia, serif;
+  margin-bottom: 10px;
+}
+
+.product-modal-info p {
+  color: #765866;
+  margin-bottom: 15px;
+}
+
+.product-modal-price {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #d34e80;
+  margin-bottom: 20px;
+}
+
+.product-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  color: #70495a;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(80, 40, 60, 0.15);
+  z-index: 2;
+}
+
+.product-modal-whatsapp {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  padding: 14px 20px;
+  border-radius: 30px;
+  background: #d85686;
+  color: white;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.product-modal-whatsapp:hover {
+  background: #c74475;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 700px) {
+  .product-modal {
+    padding: 15px;
+  }
+
+  .product-modal-content {
+    border-radius: 25px;
+  }
+
+  .product-modal-image {
+    height: 240px;
+  }
+
+  .product-modal-info {
+    padding: 22px;
+  }
+}
   </style>
 
 </head>
@@ -1364,7 +1499,61 @@
 
   </footer>
 
+<!-- =========================
+     VENTANA DE PRODUCTO
+========================= -->
 
+<div
+  id="productModal"
+  class="product-modal"
+>
+  <div class="product-modal-content">
+
+    <button
+      id="productModalClose"
+      class="product-modal-close"
+      type="button"
+    >
+      ✕
+    </button>
+
+    <div
+      id="productModalImage"
+      class="product-modal-image"
+    >
+    </div>
+
+    <div class="product-modal-info">
+
+      <h2 id="productModalName">
+        Producto
+      </h2>
+
+      <p id="productModalDescription">
+        Producto hecho a mano.
+      </p>
+
+      <span
+        id="productModalPrice"
+        class="product-modal-price"
+      >
+        ₡0
+      </span>
+
+      <a
+        id="productModalWhatsApp"
+        class="product-modal-whatsapp"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        💬 Consultar por WhatsApp
+      </a>
+
+    </div>
+
+  </div>
+</div>
   <!-- =========================
        JAVASCRIPT TEMPORAL
   ========================= -->
@@ -1573,17 +1762,108 @@ tarjeta.addEventListener(
   "click",
   function() {
 
-    alert(
-      "🌷 " +
-      (producto.nombre || "Producto") +
-      "\n\n" +
-      (producto.descripcion ||
-        "Producto hecho a mano.") +
-      "\n\n" +
-      "💗 Precio: ₡" +
+    const modal =
+      document.getElementById(
+        "productModal"
+      );
+
+    const modalName =
+      document.getElementById(
+        "productModalName"
+      );
+
+    const modalDescription =
+      document.getElementById(
+        "productModalDescription"
+      );
+
+    const modalPrice =
+      document.getElementById(
+        "productModalPrice"
+      );
+
+    const modalImage =
+      document.getElementById(
+        "productModalImage"
+      );
+
+    const modalWhatsApp =
+      document.getElementById(
+        "productModalWhatsApp"
+      );
+
+
+    modalName.textContent =
+      producto.nombre ||
+      "Producto";
+
+
+    modalDescription.textContent =
+      producto.descripcion ||
+      "Producto hecho a mano.";
+
+
+    modalPrice.textContent =
+      "₡" +
       Number(
         producto.precio || 0
-      ).toLocaleString("es-CR")
+      ).toLocaleString("es-CR");
+
+
+    if (producto.imagenUrl) {
+
+      modalImage.innerHTML = `
+        <img
+          src="${producto.imagenUrl}"
+          alt="${producto.nombre || "Producto"}"
+        >
+      `;
+
+    } else {
+
+      modalImage.innerHTML = `
+        <span style="font-size: 90px;">
+          🌷
+        </span>
+      `;
+
+    }
+
+
+    const mensaje =
+      encodeURIComponent(
+        "Hola 🌷, estoy interesada en: " +
+        (producto.nombre || "un producto") +
+        ". ¿Me pueden brindar más información?"
+      );
+
+
+    modalWhatsApp.href =
+      "https://wa.me/50685053551?text=" +
+      mensaje;
+
+
+    modal.classList.add(
+      "active"
+    );
+
+  }
+);
+    const mensaje =
+      encodeURIComponent(
+        "Hola 🌷, estoy interesada en: " +
+        (producto.nombre || "un producto") +
+        ". ¿Me pueden brindar más información?"
+      );
+
+
+    modalWhatsApp.href =
+      "https://wa.me/50685053551?text=" +
+      mensaje;
+
+
+    modal.classList.add(
+      "active"
     );
 
   }
@@ -1689,7 +1969,46 @@ tarjeta.addEventListener(
 
   }
 
+const productModal =
+  document.getElementById(
+    "productModal"
+  );
 
+const productModalClose =
+  document.getElementById(
+    "productModalClose"
+  );
+
+
+productModalClose.addEventListener(
+  "click",
+  function() {
+
+    productModal.classList.remove(
+      "active"
+    );
+
+  }
+);
+
+
+productModal.addEventListener(
+  "click",
+  function(event) {
+
+    if (
+      event.target ===
+      productModal
+    ) {
+
+      productModal.classList.remove(
+        "active"
+      );
+
+    }
+
+  }
+);
   /* =========================
      SOLICITUDES PERSONALIZADAS
   ========================= */
