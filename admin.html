@@ -12,46 +12,39 @@
 
   <title>Administración — Ramitos de Pipa</title>
 
-
   <style>
 
     * {
       box-sizing: border-box;
     }
 
-
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #fff7fb;
-      color: #4a3040;
+      background: #211c20;
+      color: #f8d8e8;
     }
 
-
     header {
-      background: #f7c9dc;
+      background: #5b3045;
       padding: 25px;
       text-align: center;
     }
-
 
     header h1 {
       margin: 0;
       font-size: 28px;
     }
 
-
     header p {
       margin: 8px 0 0;
     }
-
 
     main {
       max-width: 1000px;
       margin: 30px auto;
       padding: 0 20px;
     }
-
 
     .top-bar {
       display: flex;
@@ -62,11 +55,9 @@
       flex-wrap: wrap;
     }
 
-
     .top-bar h2 {
       margin: 0;
     }
-
 
     button {
       border: none;
@@ -77,12 +68,10 @@
       font-weight: bold;
     }
 
-
     .add-button {
       background: #d98caf;
       color: white;
     }
-
 
     .categories {
       display: flex;
@@ -91,19 +80,16 @@
       margin-bottom: 25px;
     }
 
-
     .category-button {
-      background: white;
-      border: 1px solid #e6b6cc;
-      color: #6b4055;
+      background: #171416;
+      border: 1px solid #a66d87;
+      color: #f8d8e8;
     }
-
 
     .category-button.active {
       background: #d98caf;
       color: white;
     }
-
 
     .products {
       display: grid;
@@ -112,31 +98,27 @@
       gap: 20px;
     }
 
-
     .product-card {
-      background: white;
+      background: #111011;
       border-radius: 18px;
       padding: 20px;
       box-shadow:
-        0 5px 20px rgba(100, 50, 80, 0.08);
+        0 5px 20px rgba(0, 0, 0, 0.25);
     }
-
 
     .product-image {
       width: 100%;
       height: 180px;
-      background: #f5e5ed;
+      background: #352630;
       border-radius: 14px;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
-      font-size: 50px;
-      margin-bottom: 15px;
       overflow: hidden;
+      margin-bottom: 15px;
     }
-
 
     .product-image img {
       width: 100%;
@@ -144,16 +126,17 @@
       object-fit: cover;
     }
 
+    .placeholder {
+      font-size: 50px;
+    }
 
     .product-card h3 {
       margin: 5px 0;
     }
 
-
     .product-card p {
       margin: 7px 0;
     }
-
 
     .status {
       display: inline-block;
@@ -163,18 +146,15 @@
       margin: 8px 0;
     }
 
-
     .available {
-      background: #e5f5e8;
-      color: #397345;
+      background: #18351f;
+      color: #7be38e;
     }
-
 
     .unavailable {
-      background: #f5dddd;
-      color: #9b4141;
+      background: #402020;
+      color: #ff9b9b;
     }
-
 
     .actions {
       display: flex;
@@ -183,130 +163,143 @@
       flex-wrap: wrap;
     }
 
-
     .edit {
-      background: #ead4f5;
+      background: #513568;
+      color: white;
     }
-
 
     .hide {
-      background: #eee;
+      background: #292929;
+      color: white;
     }
-
 
     .delete {
-      background: #f3c4c4;
+      background: #713c43;
+      color: white;
     }
-
 
     .empty {
       text-align: center;
       padding: 50px 20px;
-      background: white;
+      background: #111011;
       border-radius: 18px;
     }
-
 
     /* =========================
        MODAL
     ========================= */
 
-
     .modal {
-      display: none;
-
       position: fixed;
       inset: 0;
 
-      background: rgba(0, 0, 0, 0.45);
+      background: rgba(0, 0, 0, 0.75);
 
+      display: none;
       align-items: center;
       justify-content: center;
 
-      padding: 20px;
+      padding: 15px;
 
-      z-index: 1000;
+      z-index: 9999;
     }
-
 
     .modal.show {
       display: flex;
     }
 
-
     .modal-content {
       width: 100%;
-      max-width: 500px;
+      max-width: 520px;
 
-      background: white;
+      max-height: 95vh;
+      overflow-y: auto;
 
-      border-radius: 20px;
+      background: #111011;
+
+      border-radius: 18px;
 
       padding: 25px;
 
-      max-height: 90vh;
-
-      overflow-y: auto;
+      border: 1px solid #5e4050;
     }
-
 
     .modal-content h2 {
       margin-top: 0;
     }
 
-
     .form-group {
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
-
 
     .form-group label {
       display: block;
-      margin-bottom: 7px;
+      margin-bottom: 8px;
       font-weight: bold;
     }
-
 
     .form-group input,
     .form-group select,
     .form-group textarea {
       width: 100%;
 
-      padding: 12px;
-
-      border: 1px solid #dfbfd0;
+      padding: 13px;
 
       border-radius: 10px;
 
+      border: 1px solid #9c7185;
+
+      background: #3b3a3b;
+
+      color: white;
+
       font-size: 15px;
     }
-
 
     .form-group textarea {
       min-height: 100px;
       resize: vertical;
     }
 
+    .image-preview {
+      display: none;
 
-    .modal-buttons {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
+      margin-top: 12px;
+
+      width: 100%;
+      max-height: 220px;
+
+      border-radius: 12px;
+
+      object-fit: cover;
     }
 
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+
+      margin-top: 20px;
+    }
 
     .save-button {
       background: #d98caf;
       color: white;
+
       flex: 1;
     }
-
 
     .cancel-button {
-      background: #eee;
+      background: #333;
+      color: white;
+
       flex: 1;
     }
 
+    .upload-info {
+      font-size: 13px;
+      color: #c9aebc;
+      margin-top: 7px;
+    }
 
     @media (max-width: 600px) {
 
@@ -314,16 +307,13 @@
         font-size: 23px;
       }
 
-
       .top-bar {
         align-items: stretch;
       }
 
-
       .add-button {
         width: 100%;
       }
-
 
       .modal-content {
         padding: 20px;
@@ -339,1255 +329,1438 @@
 <body>
 
 
-  <header>
+<header>
 
-    <h1>🌷 Ramitos de Pipa</h1>
+  <h1>🌷 Ramitos de Pipa</h1>
 
-    <p>
-      Panel de administración
-    </p>
+  <p>
+    Panel de administración
+  </p>
 
-  </header>
-
-
-  <main>
+</header>
 
 
-    <div class="top-bar">
-
-      <h2>
-        🌸 Productos
-      </h2>
+<main>
 
 
-      <button
-        class="add-button"
-        id="addProductButton"
-      >
-        ➕ Agregar producto
-      </button>
+  <div class="top-bar">
 
-    </div>
+    <h2>
+      🌸 Productos
+    </h2>
 
-
-    <div class="categories">
-
-
-      <button
-        class="category-button active"
-        data-category="todos"
-      >
-        Todos
-      </button>
-
-
-      <button
-        class="category-button"
-        data-category="ramos"
-      >
-        💐 Ramos
-      </button>
-
-
-      <button
-        class="category-button"
-        data-category="flores"
-      >
-        🌸 Flores
-      </button>
-
-
-      <button
-        class="category-button"
-        data-category="macetas"
-      >
-        🪴 Macetas
-      </button>
-
-
-      <button
-        class="category-button"
-        data-category="llaveros"
-      >
-        🔑 Llaveros
-      </button>
-
-
-      <button
-        class="category-button"
-        data-category="otro"
-      >
-        📦 Otros
-      </button>
-
-
-    </div>
-
-
-    <div
-      id="products"
-      class="products"
+    <button
+      class="add-button"
+      id="addProductButton"
     >
+      ➕ Agregar producto
+    </button>
 
-      <div class="empty">
-
-        <h3>
-          🌷 Cargando productos...
-        </h3>
-
-      </div>
-
-    </div>
+  </div>
 
 
-  </main>
+  <div class="categories">
 
+    <button
+      class="category-button active"
+      data-category="todos"
+    >
+      Todos
+    </button>
 
+    <button
+      class="category-button"
+      data-category="ramos"
+    >
+      💐 Ramos
+    </button>
 
-  <!-- =========================
-       MODAL AGREGAR / EDITAR
-  ========================= -->
+    <button
+      class="category-button"
+      data-category="flores"
+    >
+      🌸 Flores
+    </button>
+
+    <button
+      class="category-button"
+      data-category="macetas"
+    >
+      🪴 Macetas
+    </button>
+
+    <button
+      class="category-button"
+      data-category="llaveros"
+    >
+      🔑 Llaveros
+    </button>
+
+    <button
+      class="category-button"
+      data-category="otro"
+    >
+      📦 Otros
+    </button>
+
+  </div>
 
 
   <div
-    id="productModal"
-    class="modal"
+    id="products"
+    class="products"
   >
 
+    <div class="empty">
 
-    <div class="modal-content">
-
-
-      <h2 id="modalTitle">
-        🌷 Agregar producto
-      </h2>
-
-
-      <div class="form-group">
-
-        <label>
-          🌷 Nombre del producto
-        </label>
-
-        <input
-          type="text"
-          id="productName"
-          placeholder="Ejemplo: Ramo de flores"
-        >
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>
-          📂 Categoría
-        </label>
-
-        <select id="productCategory">
-
-          <option value="ramos">
-            💐 Ramos
-          </option>
-
-          <option value="flores">
-            🌸 Flores
-          </option>
-
-          <option value="macetas">
-            🪴 Macetas
-          </option>
-
-          <option value="llaveros">
-            🔑 Llaveros
-          </option>
-
-          <option value="otro">
-            📦 Otros
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>
-          💰 Precio
-        </label>
-
-        <input
-          type="number"
-          id="productPrice"
-          placeholder="Ejemplo: 5000"
-          min="0"
-        >
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>
-          📝 Descripción
-        </label>
-
-        <textarea
-          id="productDescription"
-          placeholder="Describe el producto..."
-        ></textarea>
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>
-          📷 Imagen
-        </label>
-
-        <p style="font-size: 13px; color: #777;">
-          Por ahora guardaremos el producto
-          sin fotografía. La conexión con
-          Cloudinary la hacemos después.
-        </p>
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>
-          📦 Disponibilidad
-        </label>
-
-        <select id="productAvailable">
-
-          <option value="true">
-            ✅ Disponible
-          </option>
-
-          <option value="false">
-            ❌ No disponible
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <div class="modal-buttons">
-
-
-        <button
-          class="cancel-button"
-          id="cancelButton"
-        >
-          Cancelar
-        </button>
-
-
-        <button
-          class="save-button"
-          id="saveProductButton"
-        >
-          💾 Guardar producto
-        </button>
-
-
-      </div>
-
+      <h3>
+        🌷 Cargando productos...
+      </h3>
 
     </div>
 
   </div>
 
 
-
-  <script type="module">
-
-
-    import {
-      initializeApp
-    } from
-      "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+</main>
 
 
-    import {
-      getFirestore,
-      collection,
-      getDocs,
-      addDoc,
-      updateDoc,
-      deleteDoc,
-      doc
-    } from
-      "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+<!-- =========================
+     MODAL AGREGAR / EDITAR
+========================= -->
 
 
+<div
+  id="productModal"
+  class="modal"
+>
 
-    /* =========================
-       FIREBASE
-    ========================= */
+  <div class="modal-content">
 
-
-    const firebaseConfig = {
-
-      apiKey:
-        "AIzaSyA0redvM8Zg_UwUmhxvgt2zMpWFXwxMNK4",
-
-      authDomain:
-        "ramitos-de-pipa.firebaseapp.com",
-
-      projectId:
-        "ramitos-de-pipa",
-
-      storageBucket:
-        "ramitos-de-pipa.firebasestorage.app",
-
-      messagingSenderId:
-        "628847901109",
-
-      appId:
-        "1:628847901109:web:4fb8b309b0eac146fc41fc",
-
-      measurementId:
-        "G-40G6869742"
-
-    };
+    <h2 id="modalTitle">
+      🌷 Agregar producto
+    </h2>
 
 
-    const app =
-      initializeApp(
-        firebaseConfig
+    <div class="form-group">
+
+      <label>
+        🌷 Nombre del producto
+      </label>
+
+      <input
+        type="text"
+        id="productName"
+        placeholder="Ejemplo: Ramo de flores"
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        📂 Categoría
+      </label>
+
+      <select id="productCategory">
+
+        <option value="ramos">
+          💐 Ramos
+        </option>
+
+        <option value="flores">
+          🌸 Flores
+        </option>
+
+        <option value="macetas">
+          🪴 Macetas
+        </option>
+
+        <option value="llaveros">
+          🔑 Llaveros
+        </option>
+
+        <option value="otro">
+          📦 Otros
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        💰 Precio
+      </label>
+
+      <input
+        type="number"
+        id="productPrice"
+        placeholder="Ejemplo: 5000"
+        min="0"
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        📝 Descripción
+      </label>
+
+      <textarea
+        id="productDescription"
+        placeholder="Describe el producto..."
+      ></textarea>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        📸 Imagen
+      </label>
+
+      <input
+        type="file"
+        id="productImage"
+        accept="image/*"
+      >
+
+      <p class="upload-info">
+        Selecciona una fotografía desde tu celular.
+      </p>
+
+
+      <img
+        id="previewImage"
+        class="image-preview"
+        alt="Vista previa"
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        📦 Disponibilidad
+      </label>
+
+      <select id="productAvailable">
+
+        <option value="true">
+          ✅ Disponible
+        </option>
+
+        <option value="false">
+          ❌ No disponible
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div class="modal-actions">
+
+      <button
+        id="cancelButton"
+        class="cancel-button"
+      >
+        ❌ Cancelar
+      </button>
+
+
+      <button
+        id="saveProductButton"
+        class="save-button"
+      >
+        💾 Guardar producto
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script type="module">
+
+
+/* =========================
+   FIREBASE
+========================= */
+
+
+import {
+  initializeApp
+} from
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+  serverTimestamp
+} from
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+
+const firebaseConfig = {
+
+  apiKey:
+    "AIzaSyA0redvM8Zg_UwUmhxvgt2zMpWFXwxMNK4",
+
+  authDomain:
+    "ramitos-de-pipa.firebaseapp.com",
+
+  projectId:
+    "ramitos-de-pipa",
+
+  storageBucket:
+    "ramitos-de-pipa.firebasestorage.app",
+
+  messagingSenderId:
+    "628847901109",
+
+  appId:
+    "1:628847901109:web:4fb8b309b0eac146fc41fc",
+
+  measurementId:
+    "G-40G6869742"
+
+};
+
+
+const app =
+  initializeApp(firebaseConfig);
+
+
+const db =
+  getFirestore(app);
+
+
+/* =========================
+   CLOUDINARY
+========================= */
+
+
+const CLOUD_NAME =
+  "escxwgi4";
+
+
+const UPLOAD_PRESET =
+  "ramitos_productos";
+
+
+/* =========================
+   ELEMENTOS
+========================= */
+
+
+const productsContainer =
+  document.getElementById(
+    "products"
+  );
+
+
+const addProductButton =
+  document.getElementById(
+    "addProductButton"
+  );
+
+
+const productModal =
+  document.getElementById(
+    "productModal"
+  );
+
+
+const modalTitle =
+  document.getElementById(
+    "modalTitle"
+  );
+
+
+const productName =
+  document.getElementById(
+    "productName"
+  );
+
+
+const productCategory =
+  document.getElementById(
+    "productCategory"
+  );
+
+
+const productPrice =
+  document.getElementById(
+    "productPrice"
+  );
+
+
+const productDescription =
+  document.getElementById(
+    "productDescription"
+  );
+
+
+const productImage =
+  document.getElementById(
+    "productImage"
+  );
+
+
+const productAvailable =
+  document.getElementById(
+    "productAvailable"
+  );
+
+
+const previewImage =
+  document.getElementById(
+    "previewImage"
+  );
+
+
+const cancelButton =
+  document.getElementById(
+    "cancelButton"
+  );
+
+
+const saveProductButton =
+  document.getElementById(
+    "saveProductButton"
+  );
+
+
+let productos = [];
+
+
+let productoEditando = null;
+
+
+let imagenActual = "";
+
+
+/* =========================
+   ESCAPAR HTML
+========================= */
+
+
+function escaparHTML(texto) {
+
+  return String(texto || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+
+}
+
+
+/* =========================
+   CARGAR PRODUCTOS
+========================= */
+
+
+async function cargarProductos() {
+
+  try {
+
+    const snapshot =
+      await getDocs(
+        collection(
+          db,
+          "productos"
+        )
       );
 
 
-    const db =
-      getFirestore(app);
+    productos = [];
 
 
+    snapshot.forEach(
+      function(docSnapshot) {
 
-    /* =========================
-       ELEMENTOS
-    ========================= */
+        productos.push({
 
+          id:
+            docSnapshot.id,
 
-    const productsContainer =
-      document.getElementById(
-        "products"
-      );
+          ...docSnapshot.data()
 
-
-    const addProductButton =
-      document.getElementById(
-        "addProductButton"
-      );
-
-
-    const productModal =
-      document.getElementById(
-        "productModal"
-      );
-
-
-    const modalTitle =
-      document.getElementById(
-        "modalTitle"
-      );
-
-
-    const productName =
-      document.getElementById(
-        "productName"
-      );
-
-
-    const productCategory =
-      document.getElementById(
-        "productCategory"
-      );
-
-
-    const productPrice =
-      document.getElementById(
-        "productPrice"
-      );
-
-
-    const productDescription =
-      document.getElementById(
-        "productDescription"
-      );
-
-
-    const productAvailable =
-      document.getElementById(
-        "productAvailable"
-      );
-
-
-    const cancelButton =
-      document.getElementById(
-        "cancelButton"
-      );
-
-
-    const saveProductButton =
-      document.getElementById(
-        "saveProductButton"
-      );
-
-
-    let productos = [];
-
-
-    let productoEditando = null;
-
-
-
-    /* =========================
-       CARGAR PRODUCTOS
-    ========================= */
-
-
-    async function cargarProductos() {
-
-      try {
-
-        const snapshot =
-          await getDocs(
-            collection(
-              db,
-              "productos"
-            )
-          );
-
-
-        productos = [];
-
-
-        snapshot.forEach(
-          function(docSnapshot) {
-
-            productos.push({
-
-              id:
-                docSnapshot.id,
-
-              ...docSnapshot.data()
-
-            });
-
-          }
-        );
-
-
-        mostrarProductos(
-          "todos"
-        );
-
-
-      } catch (error) {
-
-        console.error(
-          "Error al cargar productos:",
-          error
-        );
-
-
-        productsContainer.innerHTML = `
-
-          <div class="empty">
-
-            <h3>
-              😭 Error al cargar
-              los productos
-            </h3>
-
-            <p>
-              ${error.message}
-            </p>
-
-          </div>
-
-        `;
+        });
 
       }
-
-    }
-
+    );
 
 
-    /* =========================
-       MOSTRAR PRODUCTOS
-    ========================= */
+    mostrarProductos("todos");
 
 
-    function mostrarProductos(
-      categoria
-    ) {
+  } catch (error) {
+
+    console.error(
+      "Error al cargar:",
+      error
+    );
 
 
-      productsContainer.innerHTML =
-        "";
+    productsContainer.innerHTML = `
+
+      <div class="empty">
+
+        <h3>
+          😭 No pudimos cargar los productos
+        </h3>
+
+        <p>
+          ${escaparHTML(error.message)}
+        </p>
+
+      </div>
+
+    `;
+
+  }
+
+}
 
 
-      let lista =
-        productos;
+/* =========================
+   MOSTRAR PRODUCTOS
+========================= */
 
 
-      if (
-        categoria !== "todos"
-      ) {
+function mostrarProductos(categoria) {
 
-        lista =
-          productos.filter(
-            function(producto) {
-
-              return (
-                producto.categoria ===
-                categoria
-              );
-
-            }
-          );
-
-      }
+  productsContainer.innerHTML = "";
 
 
-      if (
-        lista.length === 0
-      ) {
-
-        productsContainer.innerHTML = `
-
-          <div class="empty">
-
-            <h3>
-              🌷 No hay productos
-            </h3>
-
-            <p>
-              Puedes agregar uno
-              con el botón de arriba.
-            </p>
-
-          </div>
-
-        `;
-
-        return;
-
-      }
+  let lista =
+    productos;
 
 
-      lista.forEach(
+  if (
+    categoria !== "todos"
+  ) {
+
+    lista =
+      productos.filter(
         function(producto) {
 
-
-          const tarjeta =
-            document.createElement(
-              "div"
-            );
-
-
-          tarjeta.className =
-            "product-card";
-
-
-          tarjeta.innerHTML = `
-
-            <div class="product-image">
-
-              ${
-                producto.imagenUrl
-                  ? `
-                    <img
-                      src="${producto.imagenUrl}"
-                      alt="${
-                        producto.nombre ||
-                        "Producto"
-                      }"
-                    >
-                  `
-                  : "🌷"
-              }
-
-            </div>
-
-
-            <h3>
-              ${
-                producto.nombre ||
-                "Sin nombre"
-              }
-            </h3>
-
-
-            <p>
-              ${
-                producto.descripcion ||
-                "Sin descripción"
-              }
-            </p>
-
-
-            <p>
-              💰 ₡${
-                producto.precio || 0
-              }
-            </p>
-
-
-            <span
-              class="status ${
-                producto.disponible
-                  ? "available"
-                  : "unavailable"
-              }"
-            >
-
-              ${
-                producto.disponible
-                  ? "Disponible"
-                  : "No disponible"
-              }
-
-            </span>
-
-
-            <div class="actions">
-
-
-              <button
-                class="edit"
-                data-id="${producto.id}"
-              >
-                ✏️ Editar
-              </button>
-
-
-              <button
-                class="hide"
-                data-id="${producto.id}"
-              >
-
-                ${
-                  producto.disponible
-                    ? "👁️ Ocultar"
-                    : "👁️ Mostrar"
-                }
-
-              </button>
-
-
-              <button
-                class="delete"
-                data-id="${producto.id}"
-              >
-                🗑️ Eliminar
-              </button>
-
-
-            </div>
-
-          `;
-
-
-          productsContainer.appendChild(
-            tarjeta
+          return (
+            producto.categoria ===
+            categoria
           );
 
         }
       );
 
+  }
 
-      activarBotones();
+
+  if (lista.length === 0) {
+
+    productsContainer.innerHTML = `
+
+      <div class="empty">
+
+        <h3>
+          🌷 No hay productos
+        </h3>
+
+        <p>
+          Puedes agregar uno desde
+          el botón de arriba.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  lista.forEach(
+    function(producto) {
+
+
+      const tarjeta =
+        document.createElement(
+          "div"
+        );
+
+
+      tarjeta.className =
+        "product-card";
+
+
+      let imagenHTML = `
+
+        <div class="placeholder">
+          🌷
+        </div>
+
+      `;
+
+
+      if (
+        producto.imagenUrl
+      ) {
+
+        imagenHTML = `
+
+          <img
+            src="${escaparHTML(producto.imagenUrl)}"
+            alt="${escaparHTML(producto.nombre)}"
+          >
+
+        `;
+
+      }
+
+
+      tarjeta.innerHTML = `
+
+        <div class="product-image">
+
+          ${imagenHTML}
+
+        </div>
+
+
+        <h3>
+          ${escaparHTML(producto.nombre)}
+        </h3>
+
+
+        <p>
+          ${escaparHTML(producto.descripcion)}
+        </p>
+
+
+        <p>
+          💰 ₡${Number(producto.precio || 0).toLocaleString("es-CR")}
+        </p>
+
+
+        <span
+          class="status ${
+            producto.disponible
+              ? "available"
+              : "unavailable"
+          }"
+        >
+
+          ${
+            producto.disponible
+              ? "Disponible"
+              : "No disponible"
+          }
+
+        </span>
+
+
+        <div class="actions">
+
+          <button
+            class="edit"
+            data-id="${producto.id}"
+          >
+            ✏️ Editar
+          </button>
+
+
+          <button
+            class="hide"
+            data-id="${producto.id}"
+          >
+
+            ${
+              producto.disponible
+                ? "👁️ Ocultar"
+                : "👁️ Mostrar"
+            }
+
+          </button>
+
+
+          <button
+            class="delete"
+            data-id="${producto.id}"
+          >
+            🗑️ Eliminar
+          </button>
+
+        </div>
+
+      `;
+
+
+      productsContainer.appendChild(
+        tarjeta
+      );
 
     }
+  );
 
 
+  activarBotones();
 
-    /* =========================
-       BOTONES DE PRODUCTOS
-    ========================= */
-
-
-    function activarBotones() {
+}
 
 
-      document
-        .querySelectorAll(".edit")
-        .forEach(
-          function(boton) {
+/* =========================
+   ACTIVAR BOTONES
+========================= */
 
-            boton.addEventListener(
-              "click",
-              function() {
 
-                editarProducto(
-                  boton.dataset.id
-                );
+function activarBotones() {
 
-              }
+
+  document
+    .querySelectorAll(".edit")
+    .forEach(
+      function(boton) {
+
+        boton.addEventListener(
+          "click",
+          function() {
+
+            editarProducto(
+              boton.dataset.id
             );
 
           }
-        );
-
-
-      document
-        .querySelectorAll(".hide")
-        .forEach(
-          function(boton) {
-
-            boton.addEventListener(
-              "click",
-              function() {
-
-                cambiarDisponibilidad(
-                  boton.dataset.id
-                );
-
-              }
-            );
-
-          }
-        );
-
-
-      document
-        .querySelectorAll(".delete")
-        .forEach(
-          function(boton) {
-
-            boton.addEventListener(
-              "click",
-              function() {
-
-                eliminarProducto(
-                  boton.dataset.id
-                );
-
-              }
-            );
-
-          }
-        );
-
-    }
-
-
-
-    /* =========================
-       AGREGAR PRODUCTO
-    ========================= */
-
-
-    addProductButton.addEventListener(
-      "click",
-      function() {
-
-
-        productoEditando =
-          null;
-
-
-        modalTitle.textContent =
-          "🌷 Agregar producto";
-
-
-        productName.value =
-          "";
-
-
-        productCategory.value =
-          "ramos";
-
-
-        productPrice.value =
-          "";
-
-
-        productDescription.value =
-          "";
-
-
-        productAvailable.value =
-          "true";
-
-
-        productModal.classList.add(
-          "show"
         );
 
       }
     );
 
 
+  document
+    .querySelectorAll(".hide")
+    .forEach(
+      function(boton) {
 
-    /* =========================
-       CANCELAR
-    ========================= */
+        boton.addEventListener(
+          "click",
+          function() {
 
+            cambiarDisponibilidad(
+              boton.dataset.id
+            );
 
-    cancelButton.addEventListener(
-      "click",
-      function() {
-
-        productModal.classList.remove(
-          "show"
+          }
         );
 
       }
     );
 
 
+  document
+    .querySelectorAll(".delete")
+    .forEach(
+      function(boton) {
 
-    /* =========================
-       EDITAR PRODUCTO
-    ========================= */
+        boton.addEventListener(
+          "click",
+          function() {
 
-
-    function editarProducto(
-      id
-    ) {
-
-
-      const producto =
-        productos.find(
-          function(item) {
-
-            return item.id === id;
+            eliminarProducto(
+              boton.dataset.id
+            );
 
           }
         );
 
+      }
+    );
 
-      if (!producto) return;
-
-
-      productoEditando =
-        id;
+}
 
 
-      modalTitle.textContent =
-        "✏️ Editar producto";
+/* =========================
+   ABRIR AGREGAR
+========================= */
 
 
-      productName.value =
-        producto.nombre || "";
+addProductButton.addEventListener(
+  "click",
+  function() {
+
+    productoEditando = null;
+
+    imagenActual = "";
 
 
-      productCategory.value =
-        producto.categoria || "ramos";
+    modalTitle.textContent =
+      "🌷 Agregar producto";
 
 
-      productPrice.value =
-        producto.precio || "";
+    productName.value = "";
+
+    productCategory.value =
+      "ramos";
+
+    productPrice.value = "";
+
+    productDescription.value =
+      "";
+
+    productAvailable.value =
+      "true";
+
+    productImage.value =
+      "";
 
 
-      productDescription.value =
-        producto.descripcion || "";
+    previewImage.src = "";
+
+    previewImage.style.display =
+      "none";
 
 
-      productAvailable.value =
-        String(
-          producto.disponible !== false
-        );
+    productModal.classList.add(
+      "show"
+    );
+
+  }
+);
 
 
-      productModal.classList.add(
-        "show"
-      );
+/* =========================
+   CANCELAR
+========================= */
+
+
+cancelButton.addEventListener(
+  "click",
+  function() {
+
+    productModal.classList.remove(
+      "show"
+    );
+
+  }
+);
+
+
+/* =========================
+   PREVISUALIZAR IMAGEN
+========================= */
+
+
+productImage.addEventListener(
+  "change",
+  function() {
+
+    const archivo =
+      productImage.files[0];
+
+
+    if (!archivo) {
+
+      return;
 
     }
 
 
-
-    /* =========================
-       GUARDAR PRODUCTO
-    ========================= */
+    const lector =
+      new FileReader();
 
 
-    saveProductButton.addEventListener(
-      "click",
-      async function() {
+    lector.onload =
+      function(evento) {
+
+        previewImage.src =
+          evento.target.result;
+
+        previewImage.style.display =
+          "block";
+
+      };
 
 
-        const nombre =
-          productName.value.trim();
+    lector.readAsDataURL(
+      archivo
+    );
+
+  }
+);
 
 
-        const categoria =
-          productCategory.value;
+/* =========================
+   SUBIR A CLOUDINARY
+========================= */
 
 
-        const precio =
-          Number(
-            productPrice.value
-          );
+async function subirImagenCloudinary(
+  archivo
+) {
 
 
-        const descripcion =
-          productDescription.value.trim();
+  const url =
+    `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`;
 
 
-        const disponible =
-          productAvailable.value ===
-          "true";
+  const datos =
+    new FormData();
 
 
-        if (!nombre) {
-
-          alert(
-            "🌷 Escribe el nombre del producto."
-          );
-
-          return;
-
-        }
+  datos.append(
+    "file",
+    archivo
+  );
 
 
-        if (
-          !productPrice.value
-        ) {
-
-          alert(
-            "💰 Escribe el precio."
-          );
-
-          return;
-
-        }
+  datos.append(
+    "upload_preset",
+    UPLOAD_PRESET
+  );
 
 
-        saveProductButton.disabled =
-          true;
+  const respuesta =
+    await fetch(
+      url,
+      {
+        method: "POST",
+        body: datos
+      }
+    );
 
+
+  if (!respuesta.ok) {
+
+    throw new Error(
+      "No se pudo subir la imagen a Cloudinary."
+    );
+
+  }
+
+
+  const resultado =
+    await respuesta.json();
+
+
+  return resultado.secure_url;
+
+}
+
+
+/* =========================
+   GUARDAR PRODUCTO
+========================= */
+
+
+saveProductButton.addEventListener(
+  "click",
+  async function() {
+
+
+    const nombre =
+      productName.value.trim();
+
+
+    const categoria =
+      productCategory.value;
+
+
+    const precio =
+      Number(productPrice.value);
+
+
+    const descripcion =
+      productDescription.value.trim();
+
+
+    const disponible =
+      productAvailable.value ===
+      "true";
+
+
+    const archivo =
+      productImage.files[0];
+
+
+    if (!nombre) {
+
+      alert(
+        "🌷 Escribe el nombre del producto."
+      );
+
+      return;
+
+    }
+
+
+    if (!precio && precio !== 0) {
+
+      alert(
+        "💰 Escribe un precio válido."
+      );
+
+      return;
+
+    }
+
+
+    saveProductButton.disabled =
+      true;
+
+
+    saveProductButton.textContent =
+      "⏳ Guardando...";
+
+
+    try {
+
+
+      let imagenUrl =
+        imagenActual;
+
+
+      /* SUBIR NUEVA IMAGEN */
+
+      if (archivo) {
 
         saveProductButton.textContent =
-          "⏳ Guardando...";
+          "☁️ Subiendo imagen...";
 
 
-        try {
-
-
-          if (
-            productoEditando
-          ) {
-
-
-            await updateDoc(
-              doc(
-                db,
-                "productos",
-                productoEditando
-              ),
-              {
-
-                nombre:
-                  nombre,
-
-                categoria:
-                  categoria,
-
-                precio:
-                  precio,
-
-                descripcion:
-                  descripcion,
-
-                disponible:
-                  disponible
-
-              }
-            );
-
-
-            alert(
-              "✅ Producto actualizado correctamente."
-            );
-
-
-          } else {
-
-
-            await addDoc(
-              collection(
-                db,
-                "productos"
-              ),
-              {
-
-                nombre:
-                  nombre,
-
-                categoria:
-                  categoria,
-
-                precio:
-                  precio,
-
-                descripcion:
-                  descripcion,
-
-                disponible:
-                  disponible,
-
-                imagenUrl:
-                  ""
-
-              }
-            );
-
-
-            alert(
-              "🌷 ¡Producto agregado correctamente!"
-            );
-
-          }
-
-
-          productModal.classList.remove(
-            "show"
+        imagenUrl =
+          await subirImagenCloudinary(
+            archivo
           );
-
-
-          productoEditando =
-            null;
-
-
-          await cargarProductos();
-
-
-        } catch (error) {
-
-
-          console.error(
-            "Error al guardar:",
-            error
-          );
-
-
-          alert(
-            "😭 No pudimos guardar el producto.\n\n" +
-            error.message
-          );
-
-
-        } finally {
-
-
-          saveProductButton.disabled =
-            false;
-
-
-          saveProductButton.textContent =
-            "💾 Guardar producto";
-
-        }
 
       }
-    );
 
 
+      const datosProducto = {
 
-    /* =========================
-       OCULTAR / MOSTRAR
-    ========================= */
+        nombre:
+          nombre,
+
+        categoria:
+          categoria,
+
+        precio:
+          precio,
+
+        descripcion:
+          descripcion,
+
+        disponible:
+          disponible,
+
+        imagenUrl:
+          imagenUrl,
+
+        actualizado:
+          serverTimestamp()
+
+      };
 
 
-    async function cambiarDisponibilidad(
-      id
-    ) {
+      /* EDITAR */
 
-
-      const producto =
-        productos.find(
-          function(item) {
-
-            return item.id === id;
-
-          }
-        );
-
-
-      if (!producto) return;
-
-
-      try {
+      if (productoEditando) {
 
 
         await updateDoc(
+
           doc(
             db,
             "productos",
-            id
+            productoEditando
           ),
-          {
 
-            disponible:
-              !producto.disponible
+          datosProducto
 
-          }
-        );
-
-
-        await cargarProductos();
-
-
-      } catch (error) {
-
-
-        console.error(
-          error
         );
 
 
         alert(
-          "😭 No pudimos cambiar la disponibilidad."
+          "🌷 ¡Producto actualizado correctamente!"
         );
+
 
       }
 
-    }
+
+      /* AGREGAR */
+
+      else {
 
 
-
-    /* =========================
-       ELIMINAR
-    ========================= */
+        datosProducto.creado =
+          serverTimestamp();
 
 
-    async function eliminarProducto(
-      id
-    ) {
+        await addDoc(
 
-
-      const producto =
-        productos.find(
-          function(item) {
-
-            return item.id === id;
-
-          }
-        );
-
-
-      if (!producto) return;
-
-
-      const confirmar =
-        confirm(
-          "🗑️ ¿Seguro que quieres eliminar \"" +
-          producto.nombre +
-          "\"?"
-        );
-
-
-      if (!confirmar) return;
-
-
-      try {
-
-
-        await deleteDoc(
-          doc(
+          collection(
             db,
-            "productos",
-            id
-          )
+            "productos"
+          ),
+
+          datosProducto
+
         );
 
 
         alert(
-          "🗑️ Producto eliminado."
-        );
-
-
-        await cargarProductos();
-
-
-      } catch (error) {
-
-
-        console.error(
-          error
-        );
-
-
-        alert(
-          "😭 No pudimos eliminar el producto."
+          "🌷 ¡Producto agregado correctamente!"
         );
 
       }
 
+
+      productModal.classList.remove(
+        "show"
+      );
+
+
+      await cargarProductos();
+
+
+    } catch (error) {
+
+
+      console.error(
+        "Error:",
+        error
+      );
+
+
+      alert(
+        "😭 No pudimos guardar el producto.\n\n" +
+        error.message
+      );
+
+
+    } finally {
+
+
+      saveProductButton.disabled =
+        false;
+
+
+      saveProductButton.textContent =
+        "💾 Guardar producto";
+
     }
 
+  }
+);
 
 
-    /* =========================
-       CATEGORÍAS
-    ========================= */
+/* =========================
+   EDITAR PRODUCTO
+========================= */
 
 
-    document
-      .querySelectorAll(
-        ".category-button"
+function editarProducto(id) {
+
+
+  const producto =
+    productos.find(
+      function(item) {
+
+        return item.id === id;
+
+      }
+    );
+
+
+  if (!producto) {
+
+    return;
+
+  }
+
+
+  productoEditando =
+    id;
+
+
+  imagenActual =
+    producto.imagenUrl || "";
+
+
+  modalTitle.textContent =
+    "✏️ Editar producto";
+
+
+  productName.value =
+    producto.nombre || "";
+
+
+  productCategory.value =
+    producto.categoria || "ramos";
+
+
+  productPrice.value =
+    producto.precio || "";
+
+
+  productDescription.value =
+    producto.descripcion || "";
+
+
+  productAvailable.value =
+    producto.disponible
+      ? "true"
+      : "false";
+
+
+  productImage.value =
+    "";
+
+
+  if (producto.imagenUrl) {
+
+    previewImage.src =
+      producto.imagenUrl;
+
+    previewImage.style.display =
+      "block";
+
+  } else {
+
+    previewImage.src = "";
+
+    previewImage.style.display =
+      "none";
+
+  }
+
+
+  productModal.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =========================
+   OCULTAR / MOSTRAR
+========================= */
+
+
+async function cambiarDisponibilidad(
+  id
+) {
+
+
+  const producto =
+    productos.find(
+      function(item) {
+
+        return item.id === id;
+
+      }
+    );
+
+
+  if (!producto) {
+
+    return;
+
+  }
+
+
+  try {
+
+
+    await updateDoc(
+
+      doc(
+        db,
+        "productos",
+        id
+      ),
+
+      {
+        disponible:
+          !producto.disponible,
+
+        actualizado:
+          serverTimestamp()
+      }
+
+    );
+
+
+    await cargarProductos();
+
+
+  } catch (error) {
+
+
+    alert(
+      "😭 No pudimos cambiar la disponibilidad.\n\n" +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* =========================
+   ELIMINAR
+========================= */
+
+
+async function eliminarProducto(
+  id
+) {
+
+
+  const producto =
+    productos.find(
+      function(item) {
+
+        return item.id === id;
+
+      }
+    );
+
+
+  if (!producto) {
+
+    return;
+
+  }
+
+
+  const confirmar =
+    confirm(
+      "🗑️ ¿Seguro que quieres eliminar " +
+      producto.nombre +
+      "?"
+    );
+
+
+  if (!confirmar) {
+
+    return;
+
+  }
+
+
+  try {
+
+
+    await deleteDoc(
+
+      doc(
+        db,
+        "productos",
+        id
       )
-      .forEach(
-        function(boton) {
+
+    );
 
 
-          boton.addEventListener(
-            "click",
-            function() {
+    alert(
+      "🗑️ Producto eliminado."
+    );
 
 
-              document
-                .querySelectorAll(
-                  ".category-button"
-                )
-                .forEach(
-                  function(btn) {
+    await cargarProductos();
 
-                    btn.classList.remove(
-                      "active"
-                    );
 
-                  }
+  } catch (error) {
+
+
+    alert(
+      "😭 No pudimos eliminar el producto.\n\n" +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* =========================
+   FILTROS
+========================= */
+
+
+document
+  .querySelectorAll(
+    ".category-button"
+  )
+  .forEach(
+    function(boton) {
+
+      boton.addEventListener(
+        "click",
+        function() {
+
+
+          document
+            .querySelectorAll(
+              ".category-button"
+            )
+            .forEach(
+              function(btn) {
+
+                btn.classList.remove(
+                  "active"
                 );
 
-
-              boton.classList.add(
-                "active"
-              );
+              }
+            );
 
 
-              mostrarProductos(
-                boton.dataset.category
-              );
+          boton.classList.add(
+            "active"
+          );
 
-            }
+
+          mostrarProductos(
+            boton.dataset.category
           );
 
         }
       );
 
+    }
+  );
 
 
-    /* =========================
-       INICIAR
-    ========================= */
+/* =========================
+   INICIAR
+========================= */
 
 
-    cargarProductos();
+cargarProductos();
 
 
-  </script>
+</script>
 
 
 </body>
