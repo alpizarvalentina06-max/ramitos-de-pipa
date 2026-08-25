@@ -589,16 +589,38 @@
 
 
     addProductButton
-      .addEventListener(
-        "click",
-        function() {
+  .addEventListener(
+    "click",
+    function() {
 
-          alert(
-            "🌷 ¡El botón funciona!"
-          );
+      productoEditando = null;
 
-        }
+      imagenActual = "";
+
+      modalTitle.textContent =
+        "🌷 Agregar producto";
+
+      productName.value = "";
+
+      productCategory.value = "ramos";
+
+      productPrice.value = "";
+
+      productDescription.value = "";
+
+      productAvailable.value = "true";
+
+      productImage.value = "";
+
+      imagePreview.style.display =
+        "none";
+
+      productModal.classList.add(
+        "active"
       );
+
+    }
+  );
 
 
     cargarProductos();
