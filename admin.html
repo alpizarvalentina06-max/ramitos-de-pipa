@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Administración — Ramitos de Pipa</title>
 
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -86,7 +93,8 @@
 
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns:
+        repeat(auto-fit, minmax(260px, 1fr));
       gap: 20px;
     }
 
@@ -94,7 +102,8 @@
       background: white;
       border-radius: 18px;
       padding: 20px;
-      box-shadow: 0 5px 20px rgba(100, 50, 80, 0.08);
+      box-shadow:
+        0 5px 20px rgba(100, 50, 80, 0.08);
     }
 
     .product-image {
@@ -102,9 +111,11 @@
       height: 180px;
       background: #f5e5ed;
       border-radius: 14px;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       font-size: 50px;
       margin-bottom: 15px;
     }
@@ -123,6 +134,7 @@
       border-radius: 20px;
       font-size: 13px;
       margin: 8px 0;
+
       background: #e5f5e8;
       color: #397345;
     }
@@ -154,6 +166,7 @@
     }
 
     @media (max-width: 600px) {
+
       header h1 {
         font-size: 23px;
       }
@@ -165,21 +178,34 @@
       .add-button {
         width: 100%;
       }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
   <header>
+
     <h1>🌷 Ramitos de Pipa</h1>
-    <p>Panel de administración</p>
+
+    <p>
+      Panel de administración
+    </p>
+
   </header>
+
 
   <main>
 
     <div class="top-bar">
-      <h2>🌸 Productos</h2>
+
+      <h2>
+        🌸 Productos
+      </h2>
 
       <button
         class="add-button"
@@ -187,320 +213,399 @@
       >
         ➕ Agregar producto
       </button>
+
     </div>
+
 
     <div class="categories">
 
       <button
         class="category-button active"
-        onclick="mostrarCategoria('todos', this)"
+        data-category="todos"
       >
         Todos
       </button>
 
       <button
         class="category-button"
-        onclick="mostrarCategoria('ramos', this)"
+        data-category="ramos"
       >
         💐 Ramos
       </button>
 
       <button
         class="category-button"
-        onclick="mostrarCategoria('flores', this)"
+        data-category="flores"
       >
         🌸 Flores
       </button>
 
       <button
         class="category-button"
-        onclick="mostrarCategoria('macetas', this)"
+        data-category="macetas"
       >
         🪴 Macetas
       </button>
 
       <button
         class="category-button"
-        onclick="mostrarCategoria('llaveros', this)"
+        data-category="llaveros"
       >
         🔑 Llaveros
       </button>
 
       <button
         class="category-button"
-        onclick="mostrarCategoria('otro', this)"
+        data-category="otro"
       >
         📦 Otros
       </button>
 
     </div>
 
-    <div id="products" class="products">
+
+    <div
+      id="products"
+      class="products"
+    >
 
       <div class="empty">
-        <h3>🌷 Todavía no hay productos aquí</h3>
-        <p>
-          Cuando agreguemos productos aparecerán
-          automáticamente en este espacio.
-        </p>
+
+        <h3>
+          🌷 Cargando productos...
+        </h3>
+
       </div>
 
     </div>
 
   </main>
 
-  <script>
 
-    <script type="module">
+  <script type="module">
 
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    import {
+      initializeApp
+    } from
+      "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
-  import {
-    getFirestore,
-    collection,
-    getDocs
-  } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
+    import {
+      getFirestore,
+      collection,
+      getDocs
+    } from
+      "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyA0redvM8Zg_UwUmhxvgt2zMpWFXwxMNK4",
-    authDomain: "ramitos-de-pipa.firebaseapp.com",
-    projectId: "ramitos-de-pipa",
-    storageBucket: "ramitos-de-pipa.firebasestorage.app",
-    messagingSenderId: "628847901109",
-    appId: "1:628847901109:web:4fb8b309b0eac146fc41fc",
-    measurementId: "G-40G6869742"
-  };
 
+    const firebaseConfig = {
 
-  const app = initializeApp(firebaseConfig);
+      apiKey:
+        "AIzaSyA0redvM8Zg_UwUmhxvgt2zMpWFXwxMNK4",
 
-  const db = getFirestore(app);
+      authDomain:
+        "ramitos-de-pipa.firebaseapp.com",
 
-  const productsContainer =
-    document.getElementById("products");
+      projectId:
+        "ramitos-de-pipa",
 
+      storageBucket:
+        "ramitos-de-pipa.firebasestorage.app",
 
-  let productos = [];
+      messagingSenderId:
+        "628847901109",
 
+      appId:
+        "1:628847901109:web:4fb8b309b0eac146fc41fc",
 
-  async function cargarProductos() {
-
-    try {
-
-      const snapshot =
-        await getDocs(
-          collection(db, "productos")
-        );
-
-
-      productos = [];
-
-      snapshot.forEach(function(doc) {
-
-        productos.push({
-          id: doc.id,
-          ...doc.data()
-        });
-
-      });
-
-
-      mostrarProductos("todos");
-
-    } catch (error) {
-
-      console.error(
-        "Error al cargar productos:",
-        error
-      );
-
-      productsContainer.innerHTML = `
-        <div class="empty">
-          <h3>😭 No pudimos cargar los productos</h3>
-          <p>
-            Revisa la conexión con Firebase.
-          </p>
-        </div>
-      `;
-
-    }
-
-  }
-
-
-  function mostrarProductos(categoria) {
-
-    productsContainer.innerHTML = "";
-
-
-    let lista = productos;
-
-
-    if (categoria !== "todos") {
-
-      lista = productos.filter(function(producto) {
-
-        return producto.categoria === categoria;
-
-      });
-
-    }
-
-
-    if (lista.length === 0) {
-
-      productsContainer.innerHTML = `
-        <div class="empty">
-          <h3>🌷 No hay productos en esta categoría</h3>
-          <p>
-            Puedes agregar uno desde el botón
-            "Agregar producto".
-          </p>
-        </div>
-      `;
-
-      return;
-
-    }
-
-
-    lista.forEach(function(producto) {
-
-      const tarjeta =
-        document.createElement("div");
-
-      tarjeta.className = "product-card";
-
-
-      tarjeta.innerHTML = `
-
-        <div class="product-image">
-          🌷
-        </div>
-
-        <h3>
-          ${producto.nombre || "Sin nombre"}
-        </h3>
-
-        <p>
-          ${producto.descripcion || "Sin descripción"}
-        </p>
-
-        <p>
-          💰 ₡${producto.precio || 0}
-        </p>
-
-        <span class="status">
-          ${producto.disponible ? "Disponible" : "No disponible"}
-        </span>
-
-        <div class="actions">
-
-          <button class="edit">
-            ✏️ Editar
-          </button>
-
-          <button class="hide">
-            👁️ Ocultar
-          </button>
-
-          <button class="delete">
-            🗑️ Eliminar
-          </button>
-
-        </div>
-      `;
-
-
-      productsContainer.appendChild(tarjeta);
-
-    });
-
-  }
-
-
-  window.mostrarCategoria =
-    function(categoria, boton) {
-
-      const botones =
-        document.querySelectorAll(
-          ".category-button"
-        );
-
-      botones.forEach(function(b) {
-
-        b.classList.remove("active");
-
-      });
-
-
-      boton.classList.add("active");
-
-      mostrarProductos(categoria);
+      measurementId:
+        "G-40G6869742"
 
     };
 
 
-  const addProductButton =
-  document.getElementById("addProductButton");
-
-addProductButton.addEventListener(
-  "click",
-  function() {
-
-    const nombre = prompt(
-      "🌷 Nombre del producto:"
-    );
-
-    if (!nombre) return;
+    const app =
+      initializeApp(firebaseConfig);
 
 
-    const categoria = prompt(
-      "📂 Categoría:\n\n" +
-      "Escribe una de estas:\n" +
-      "ramos\n" +
-      "flores\n" +
-      "macetas\n" +
-      "llaveros\n" +
-      "otro"
-    );
-
-    if (!categoria) return;
+    const db =
+      getFirestore(app);
 
 
-    const precio = prompt(
-      "💰 Precio del producto:"
-    );
-
-    if (!precio) return;
+    const productsContainer =
+      document.getElementById("products");
 
 
-    const descripcion = prompt(
-      "📝 Descripción del producto:"
-    );
-
-    if (!descripcion) return;
-
-
-    const disponible = confirm(
-      "✅ ¿El producto está disponible?"
-    );
+    const addProductButton =
+      document.getElementById(
+        "addProductButton"
+      );
 
 
-    alert(
-      "🌷 Producto preparado.\n\n" +
-      "En el siguiente paso añadiremos " +
-      "la fotografía y lo guardaremos " +
-      "automáticamente en Firebase."
-    );
+    let productos = [];
 
-  }
-};
 
-  cargarProductos();
+    async function cargarProductos() {
 
-</script>
+      try {
+
+        const snapshot =
+          await getDocs(
+            collection(
+              db,
+              "productos"
+            )
+          );
+
+
+        productos = [];
+
+
+        snapshot.forEach(
+          function(doc) {
+
+            productos.push({
+
+              id: doc.id,
+
+              ...doc.data()
+
+            });
+
+          }
+        );
+
+
+        mostrarProductos("todos");
+
+
+      } catch (error) {
+
+        console.error(
+          "Error al cargar productos:",
+          error
+        );
+
+
+        productsContainer.innerHTML = `
+
+          <div class="empty">
+
+            <h3>
+              😭 No pudimos cargar
+              los productos
+            </h3>
+
+            <p>
+              Revisa la conexión
+              con Firebase.
+            </p>
+
+          </div>
+
+        `;
+
+      }
+
+    }
+
+
+    function mostrarProductos(
+      categoria
+    ) {
+
+      productsContainer.innerHTML =
+        "";
+
+
+      let lista =
+        productos;
+
+
+      if (
+        categoria !== "todos"
+      ) {
+
+        lista =
+          productos.filter(
+            function(producto) {
+
+              return (
+                producto.categoria ===
+                categoria
+              );
+
+            }
+          );
+
+      }
+
+
+      if (lista.length === 0) {
+
+        productsContainer.innerHTML = `
+
+          <div class="empty">
+
+            <h3>
+              🌷 No hay productos
+            </h3>
+
+            <p>
+              Puedes agregar uno
+              desde el botón
+              "Agregar producto".
+            </p>
+
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      lista.forEach(
+        function(producto) {
+
+          const tarjeta =
+            document.createElement(
+              "div"
+            );
+
+
+          tarjeta.className =
+            "product-card";
+
+
+          tarjeta.innerHTML = `
+
+            <div class="product-image">
+              🌷
+            </div>
+
+            <h3>
+              ${
+                producto.nombre ||
+                "Sin nombre"
+              }
+            </h3>
+
+            <p>
+              ${
+                producto.descripcion ||
+                "Sin descripción"
+              }
+            </p>
+
+            <p>
+              💰 ₡${
+                producto.precio || 0
+              }
+            </p>
+
+            <span class="status">
+
+              ${
+                producto.disponible
+                  ? "Disponible"
+                  : "No disponible"
+              }
+
+            </span>
+
+            <div class="actions">
+
+              <button class="edit">
+                ✏️ Editar
+              </button>
+
+              <button class="hide">
+                👁️ Ocultar
+              </button>
+
+              <button class="delete">
+                🗑️ Eliminar
+              </button>
+
+            </div>
+
+          `;
+
+
+          productsContainer
+            .appendChild(
+              tarjeta
+            );
+
+        }
+      );
+
+    }
+
+
+    document
+      .querySelectorAll(
+        ".category-button"
+      )
+      .forEach(
+        function(boton) {
+
+          boton.addEventListener(
+            "click",
+            function() {
+
+              document
+                .querySelectorAll(
+                  ".category-button"
+                )
+                .forEach(
+                  function(btn) {
+
+                    btn.classList
+                      .remove(
+                        "active"
+                      );
+
+                  }
+                );
+
+
+              boton.classList.add(
+                "active"
+              );
+
+
+              mostrarProductos(
+                boton.dataset.category
+              );
+
+            }
+          );
+
+        }
+      );
+
+
+    addProductButton
+      .addEventListener(
+        "click",
+        function() {
+
+          alert(
+            "🌷 ¡El botón funciona!"
+          );
+
+        }
+      );
+
+
+    cargarProductos();
+
+  </script>
+
 
 </body>
+
 </html>
