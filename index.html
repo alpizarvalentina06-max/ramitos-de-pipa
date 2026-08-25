@@ -44,31 +44,21 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-
       background: rgba(255, 248, 251, 0.96);
-
       backdrop-filter: blur(12px);
-
       border-bottom: 1px solid #f3d5e2;
-
       padding: 15px 6%;
-
       display: flex;
       justify-content: space-between;
       align-items: center;
-
       gap: 20px;
     }
 
     .logo {
       font-family: Georgia, serif;
-
       font-size: 1.5rem;
-
       font-weight: bold;
-
       color: #d55384;
-
       white-space: nowrap;
     }
 
@@ -76,17 +66,13 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-
       gap: 18px;
     }
 
     nav a {
       text-decoration: none;
-
       color: #704b5c;
-
       font-weight: bold;
-
       transition: 0.2s;
     }
 
@@ -94,39 +80,29 @@
       color: #d55384;
     }
 
-
     /* =========================
        PORTADA
     ========================= */
 
     .hero {
-
       min-height: 82vh;
-
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
       text-align: center;
-
       padding: 80px 7%;
 
       background:
-
         radial-gradient(
           circle at 10% 20%,
           #ffdce9 0,
           transparent 24%
         ),
-
         radial-gradient(
           circle at 90% 80%,
           #ffe9f2 0,
           transparent 25%
         ),
-
         #fff8fb;
     }
 
@@ -136,79 +112,49 @@
 
     .hero-flowers {
       font-size: 4rem;
-
       margin-bottom: 15px;
     }
 
     .hero h1 {
-
       font-family: Georgia, serif;
-
-      font-size: clamp(
-        3rem,
-        8vw,
-        6rem
-      );
-
+      font-size: clamp(3rem, 8vw, 6rem);
       line-height: 1;
-
       color: #d34e80;
-
       margin-bottom: 20px;
     }
 
     .hero h2 {
-
       font-size: 1.5rem;
-
       color: #795464;
-
       margin-bottom: 15px;
     }
 
     .hero p {
-
       max-width: 650px;
-
       margin: auto;
-
       font-size: 1.1rem;
-
       color: #765866;
     }
 
     .button {
-
       display: inline-block;
-
       margin-top: 30px;
-
       padding: 14px 28px;
-
       border-radius: 40px;
-
       background: #d85686;
-
       color: white;
-
       text-decoration: none;
-
       font-weight: bold;
-
       box-shadow:
         0 8px 20px
         rgba(216, 86, 134, 0.25);
-
       transition: 0.3s;
     }
 
     .button:hover {
-
       transform: translateY(-3px);
-
       background: #c74475;
     }
-
 
     /* =========================
        SECCIONES
@@ -219,37 +165,27 @@
     }
 
     .section-title {
-
       text-align: center;
-
       margin-bottom: 45px;
     }
 
     .section-title h2 {
-
       font-family: Georgia, serif;
-
       font-size: 2.6rem;
-
       color: #d34e80;
-
       margin-bottom: 8px;
     }
 
     .section-title p {
-
       color: #876675;
     }
-
 
     /* =========================
        CATEGORÍAS
     ========================= */
 
     .categories {
-
       max-width: 1100px;
-
       margin: auto;
 
       display: grid;
@@ -264,22 +200,13 @@
     }
 
     .category {
-
       background: white;
-
-      border:
-        1px solid #f0d5e1;
-
+      border: 1px solid #f0d5e1;
       border-radius: 25px;
-
       padding: 30px 20px;
-
       text-align: center;
-
       text-decoration: none;
-
       color: inherit;
-
       transition: 0.3s;
 
       box-shadow:
@@ -288,7 +215,6 @@
     }
 
     .category:hover {
-
       transform: translateY(-6px);
 
       box-shadow:
@@ -297,35 +223,26 @@
     }
 
     .category-icon {
-
       font-size: 3rem;
-
       margin-bottom: 10px;
     }
 
     .category h3 {
-
       color: #70495a;
-
       font-family: Georgia, serif;
-
       font-size: 1.3rem;
     }
-
 
     /* =========================
        PRODUCTOS
     ========================= */
 
     #productos {
-
       background: #fff0f6;
     }
 
     .products {
-
       max-width: 1100px;
-
       margin: auto;
 
       display: grid;
@@ -340,36 +257,32 @@
     }
 
     .product {
+      position: relative;
 
       background: white;
-
       border-radius: 25px;
-
       overflow: hidden;
 
-      border:
-        1px solid #efd3df;
+      border: 1px solid #efd3df;
 
       box-shadow:
         0 5px 18px
         rgba(120, 70, 90, 0.07);
 
       transition: 0.3s;
+
+      cursor: pointer;
     }
 
     .product:hover {
-
       transform: translateY(-5px);
     }
 
     .product-image {
-
       height: 240px;
 
       display: flex;
-
       align-items: center;
-
       justify-content: center;
 
       background:
@@ -380,54 +293,91 @@
         );
 
       font-size: 5rem;
+
+      position: relative;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* =========================
+       CORAZÓN FAVORITOS
+    ========================= */
+
+    .favorite-button {
+      position: absolute;
+
+      top: 12px;
+      right: 12px;
+
+      width: 44px;
+      height: 44px;
+
+      border: none;
+      border-radius: 50%;
+
+      background: rgba(255, 255, 255, 0.95);
+
+      font-size: 1.5rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+
+      z-index: 10;
+
+      box-shadow:
+        0 4px 12px
+        rgba(80, 40, 60, 0.15);
+
+      transition: 0.2s;
+    }
+
+    .favorite-button:hover {
+      transform: scale(1.08);
+    }
+
+    .favorite-button.active {
+      color: #d85686;
     }
 
     .product-info {
-
       padding: 22px;
     }
 
     .product-info h3 {
-
       color: #70495a;
-
       margin-bottom: 5px;
     }
 
     .product-info p {
-
       color: #876675;
-
       font-size: 0.95rem;
     }
 
     .price {
-
       display: block;
-
       margin-top: 12px;
-
       font-size: 1.25rem;
-
       font-weight: bold;
-
       color: #d34e80;
     }
-
 
     /* =========================
        PERSONALIZADOS
     ========================= */
 
     #personalizados {
-
       background: #fff8fb;
     }
 
     .custom {
-
       max-width: 900px;
-
       margin: auto;
 
       background: white;
@@ -436,8 +386,7 @@
 
       border-radius: 30px;
 
-      border:
-        1px solid #efd3df;
+      border: 1px solid #efd3df;
 
       box-shadow:
         0 10px 30px
@@ -445,71 +394,51 @@
     }
 
     .custom-icon {
-
       text-align: center;
-
       font-size: 3.5rem;
-
       margin-bottom: 10px;
     }
 
     .custom h2 {
-
       text-align: center;
-
       font-family: Georgia, serif;
-
       color: #d34e80;
-
       margin-bottom: 10px;
     }
 
     .custom-intro {
-
       text-align: center;
-
       color: #806170;
-
       max-width: 650px;
-
       margin: auto;
     }
 
     form {
-
       margin-top: 35px;
     }
 
     label {
-
       display: block;
-
       margin-top: 18px;
-
       margin-bottom: 6px;
-
       font-weight: bold;
-
       color: #70495a;
     }
 
     input,
     textarea,
     select {
-
       width: 100%;
 
       padding: 13px 15px;
 
-      border:
-        1px solid #e7cad7;
+      border: 1px solid #e7cad7;
 
       border-radius: 14px;
 
       background: #fffafd;
 
       font-family: inherit;
-
       font-size: 1rem;
 
       outline: none;
@@ -518,35 +447,26 @@
     input:focus,
     textarea:focus,
     select:focus {
-
       border-color: #d85686;
     }
 
     textarea {
-
       min-height: 140px;
-
       resize: vertical;
     }
 
     input[type="file"] {
-
       padding: 11px;
-
       background: white;
     }
 
     .file-note {
-
       font-size: 0.85rem;
-
       color: #937382;
-
       margin-top: 5px;
     }
 
     .submit-button {
-
       width: 100%;
 
       margin-top: 25px;
@@ -569,26 +489,20 @@
     }
 
     .submit-button:hover {
-
       background: #c74475;
     }
-
 
     /* =========================
        CONTACTO
     ========================= */
 
     #contacto {
-
       background: #fff0f6;
-
       text-align: center;
     }
 
     .contact-box {
-
       max-width: 850px;
-
       margin: auto;
 
       background: white;
@@ -597,12 +511,10 @@
 
       padding: 45px 25px;
 
-      border:
-        1px solid #efd3df;
+      border: 1px solid #efd3df;
     }
 
     .contact-buttons {
-
       display: flex;
 
       justify-content: center;
@@ -615,7 +527,6 @@
     }
 
     .contact-button {
-
       display: inline-block;
 
       padding: 14px 24px;
@@ -634,58 +545,231 @@
     }
 
     .contact-button:hover {
-
       transform: translateY(-3px);
-
       background: #c74475;
     }
-
 
     /* =========================
        SOBRE NOSOTROS
     ========================= */
 
     .about {
-
       max-width: 850px;
-
       margin: auto;
-
       text-align: center;
     }
 
     .about p {
-
       font-size: 1.08rem;
-
       color: #765866;
     }
-
 
     /* =========================
        FOOTER
     ========================= */
 
     footer {
-
       background: #5c4050;
-
       color: white;
-
       text-align: center;
-
       padding: 35px 20px;
     }
 
     footer h3 {
-
       font-family: Georgia, serif;
-
       font-size: 1.7rem;
-
       margin-bottom: 8px;
     }
 
+    /* =========================
+       VENTANA DE PRODUCTO
+    ========================= */
+
+    .product-modal {
+      display: none;
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 3000;
+
+      background:
+        rgba(50, 30, 40, 0.65);
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 20px;
+    }
+
+    .product-modal.active {
+      display: flex;
+    }
+
+    .product-modal-content {
+      position: relative;
+
+      width: 100%;
+
+      max-width: 520px;
+
+      max-height: 90vh;
+
+      overflow-y: auto;
+
+      background: white;
+
+      border-radius: 30px;
+
+      box-shadow:
+        0 20px 60px
+        rgba(80, 40, 60, 0.25);
+
+      animation:
+        modalEntrada
+        0.25s ease;
+    }
+
+    @keyframes modalEntrada {
+
+      from {
+        opacity: 0;
+        transform:
+          translateY(20px)
+          scale(0.96);
+      }
+
+      to {
+        opacity: 1;
+        transform:
+          translateY(0)
+          scale(1);
+      }
+
+    }
+
+    .product-modal-image {
+      width: 100%;
+
+      height: 300px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffe1ed,
+          #fff3f8
+        );
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+    }
+
+    .product-modal-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-modal-info {
+      padding: 28px;
+    }
+
+    .product-modal-info h2 {
+      color: #d34e80;
+      font-family: Georgia, serif;
+      margin-bottom: 10px;
+    }
+
+    .product-modal-info p {
+      color: #765866;
+      margin-bottom: 15px;
+    }
+
+    .product-modal-price {
+      display: block;
+
+      font-size: 1.5rem;
+
+      font-weight: bold;
+
+      color: #d34e80;
+
+      margin-bottom: 20px;
+    }
+
+    .product-modal-close {
+      position: absolute;
+
+      top: 15px;
+
+      right: 15px;
+
+      width: 42px;
+
+      height: 42px;
+
+      border: none;
+
+      border-radius: 50%;
+
+      background: white;
+
+      color: #70495a;
+
+      font-size: 1.4rem;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 4px 12px
+        rgba(80, 40, 60, 0.15);
+
+      z-index: 2;
+    }
+
+    .product-modal-whatsapp {
+      display: block;
+
+      text-align: center;
+
+      text-decoration: none;
+
+      padding: 14px 20px;
+
+      border-radius: 30px;
+
+      background: #d85686;
+
+      color: white;
+
+      font-weight: bold;
+
+      transition: 0.3s;
+    }
+
+    .product-modal-whatsapp:hover {
+      background: #c74475;
+      transform: translateY(-2px);
+    }
+
+    /* =========================
+       MENSAJE SIN PRODUCTOS
+    ========================= */
+
+    .empty-products {
+      text-align: center;
+
+      color: #987585;
+
+      padding: 25px;
+
+      grid-column: 1 / -1;
+    }
 
     /* =========================
        CELULARES
@@ -694,176 +778,49 @@
     @media (max-width: 700px) {
 
       nav {
-
         flex-direction: column;
-
         padding: 15px;
       }
 
       nav .links {
-
         gap: 10px;
-
         font-size: 0.85rem;
       }
 
       .hero {
-
         padding: 65px 6%;
       }
 
       .hero h1 {
-
         font-size: 3.5rem;
       }
 
       section {
-
         padding: 55px 6%;
       }
 
       .custom {
-
         padding: 30px 20px;
       }
 
+      .product-modal {
+        padding: 15px;
+      }
+
+      .product-modal-content {
+        border-radius: 25px;
+      }
+
+      .product-modal-image {
+        height: 240px;
+      }
+
+      .product-modal-info {
+        padding: 22px;
+      }
+
     }
-/* =========================
-   VENTANA DE PRODUCTO
-========================= */
 
-.product-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 3000;
-  background: rgba(50, 30, 40, 0.65);
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-.product-modal.active {
-  display: flex;
-}
-
-.product-modal-content {
-  position: relative;
-  width: 100%;
-  max-width: 520px;
-  max-height: 90vh;
-  overflow-y: auto;
-  background: white;
-  border-radius: 30px;
-  box-shadow: 0 20px 60px rgba(80, 40, 60, 0.25);
-  overflow: hidden;
-  animation: modalEntrada 0.25s ease;
-}
-
-@keyframes modalEntrada {
-  from {
-    opacity: 0;
-    transform: translateY(20px) scale(0.96);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.product-modal-image {
-  width: 100%;
-  height: 300px;
-  background: linear-gradient(
-    135deg,
-    #ffe1ed,
-    #fff3f8
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.product-modal-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.product-modal-info {
-  padding: 28px;
-}
-
-.product-modal-info h2 {
-  color: #d34e80;
-  font-family: Georgia, serif;
-  margin-bottom: 10px;
-}
-
-.product-modal-info p {
-  color: #765866;
-  margin-bottom: 15px;
-}
-
-.product-modal-price {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #d34e80;
-  margin-bottom: 20px;
-}
-
-.product-modal-close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  width: 42px;
-  height: 42px;
-  border: none;
-  border-radius: 50%;
-  background: white;
-  color: #70495a;
-  font-size: 1.4rem;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(80, 40, 60, 0.15);
-  z-index: 2;
-}
-
-.product-modal-whatsapp {
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  padding: 14px 20px;
-  border-radius: 30px;
-  background: #d85686;
-  color: white;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.product-modal-whatsapp:hover {
-  background: #c74475;
-  transform: translateY(-2px);
-}
-
-@media (max-width: 700px) {
-  .product-modal {
-    padding: 15px;
-  }
-
-  .product-modal-content {
-    border-radius: 25px;
-  }
-
-  .product-modal-image {
-    height: 240px;
-  }
-
-  .product-modal-info {
-    padding: 22px;
-  }
-}
   </style>
 
 </head>
@@ -884,29 +841,17 @@
 
     <div class="links">
 
-      <a href="#ramos">
-        Ramos
-      </a>
+      <a href="#ramos">Ramos</a>
 
-      <a href="#flores">
-        Flores
-      </a>
+      <a href="#flores">Flores</a>
 
-      <a href="#macetas">
-        Macetas
-      </a>
+      <a href="#macetas">Macetas</a>
 
-      <a href="#llaveros">
-        Llaveros
-      </a>
+      <a href="#llaveros">Llaveros</a>
 
-      <a href="#personalizados">
-        Personalizados
-      </a>
+      <a href="#personalizados">Personalizados</a>
 
-      <a href="#contacto">
-        Contacto
-      </a>
+      <a href="#contacto">Contacto</a>
 
     </div>
 
@@ -971,7 +916,6 @@
 
 
     <div class="categories">
-
 
       <a
         href="#ramos"
@@ -1052,7 +996,6 @@
 
       </a>
 
-
     </div>
 
   </section>
@@ -1077,34 +1020,7 @@
 
     </div>
 
-    <div class="products">
-
-      <div class="product">
-
-        <div class="product-image">
-          💐
-        </div>
-
-        <div class="product-info">
-
-          <h3>
-            Ramos personalizados
-          </h3>
-
-          <p>
-            Diferentes combinaciones de flores
-            hechas a mano.
-          </p>
-
-          <span class="price">
-            Precio según diseño
-          </span>
-
-        </div>
-
-      </div>
-
-    </div>
+    <div class="products"></div>
 
   </section>
 
@@ -1127,35 +1043,7 @@
 
     </div>
 
-    <div class="products">
-
-      <div class="product">
-
-        <div class="product-image">
-          🌸
-        </div>
-
-        <div class="product-info">
-
-          <h3>
-            Flores de limpiapipas
-          </h3>
-
-          <p>
-            Una flor hecha a mano para
-            convertir cualquier momento
-            en un detalle especial.
-          </p>
-
-          <span class="price">
-            ₡7.000
-          </span>
-
-        </div>
-
-      </div>
-
-    </div>
+    <div class="products"></div>
 
   </section>
 
@@ -1178,34 +1066,7 @@
 
     </div>
 
-    <div class="products">
-
-      <div class="product">
-
-        <div class="product-image">
-          🪴🌷
-        </div>
-
-        <div class="product-info">
-
-          <h3>
-            Maceta de flores
-          </h3>
-
-          <p>
-            Un detalle bonito para decorar
-            o regalar.
-          </p>
-
-          <span class="price">
-            ₡5.000
-          </span>
-
-        </div>
-
-      </div>
-
-    </div>
+    <div class="products"></div>
 
   </section>
 
@@ -1228,34 +1089,7 @@
 
     </div>
 
-    <div class="products">
-
-      <div class="product">
-
-        <div class="product-image">
-          🔑🌸
-        </div>
-
-        <div class="product-info">
-
-          <h3>
-            Llaveros de flores
-          </h3>
-
-          <p>
-            Un pequeño detalle para llevar
-            contigo a todas partes.
-          </p>
-
-          <span class="price">
-            ₡2.000
-          </span>
-
-        </div>
-
-      </div>
-
-    </div>
+    <div class="products"></div>
 
   </section>
 
@@ -1287,7 +1121,6 @@
 
 
       <form id="personalizedForm">
-
 
         <label for="nombre">
           Nombre
@@ -1451,7 +1284,6 @@
 
       <div class="contact-buttons">
 
-
         <a
           class="contact-button"
           href="https://wa.me/50685053551"
@@ -1470,7 +1302,6 @@
         >
           📸 Instagram
         </a>
-
 
       </div>
 
@@ -1499,219 +1330,312 @@
 
   </footer>
 
-<!-- =========================
-     VENTANA DE PRODUCTO
-========================= -->
 
-<div
-  id="productModal"
-  class="product-modal"
->
-  <div class="product-modal-content">
+  <!-- =========================
+       VENTANA DE PRODUCTO
+  ========================= -->
 
-    <button
-      id="productModalClose"
-      class="product-modal-close"
-      type="button"
-    >
-      ✕
-    </button>
+  <div
+    id="productModal"
+    class="product-modal"
+  >
 
-    <div
-      id="productModalImage"
-      class="product-modal-image"
-    >
-    </div>
+    <div class="product-modal-content">
 
-    <div class="product-modal-info">
-
-      <h2 id="productModalName">
-        Producto
-      </h2>
-
-      <p id="productModalDescription">
-        Producto hecho a mano.
-      </p>
-
-      <span
-        id="productModalPrice"
-        class="product-modal-price"
+      <button
+        id="productModalClose"
+        class="product-modal-close"
+        type="button"
       >
-        ₡0
-      </span>
+        ✕
+      </button>
 
-      <a
-        id="productModalWhatsApp"
-        class="product-modal-whatsapp"
-        href="#"
-        target="_blank"
-        rel="noopener noreferrer"
+
+      <div
+        id="productModalImage"
+        class="product-modal-image"
       >
-        💬 Consultar por WhatsApp
-      </a>
+      </div>
+
+
+      <div class="product-modal-info">
+
+        <h2 id="productModalName">
+          Producto
+        </h2>
+
+
+        <p id="productModalDescription">
+          Producto hecho a mano.
+        </p>
+
+
+        <span
+          id="productModalPrice"
+          class="product-modal-price"
+        >
+          ₡0
+        </span>
+
+
+        <a
+          id="productModalWhatsApp"
+          class="product-modal-whatsapp"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          💬 Consultar por WhatsApp
+        </a>
+
+      </div>
 
     </div>
 
   </div>
-</div>
+
+
   <!-- =========================
-       JAVASCRIPT TEMPORAL
+       JAVASCRIPT
   ========================= -->
-<script type="module">
 
-  import {
-    initializeApp
-  } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+  <script type="module">
 
-  import {
-    getFirestore,
-    collection,
-    getDocs,
-    addDoc,
-    serverTimestamp
-  } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
 
-  /* =========================
-     FIREBASE
-  ========================= */
-
-  const firebaseConfig = {
-
-    apiKey:
-      "AIzaSyA0redvM8Zg_UwUmhxvgt2zMpWFXwxMNK4",
-
-    authDomain:
-      "ramitos-de-pipa.firebaseapp.com",
-
-    projectId:
-      "ramitos-de-pipa",
-
-    storageBucket:
-      "ramitos-de-pipa.firebasestorage.app",
-
-    messagingSenderId:
-      "628847901109",
-
-    appId:
-      "1:628847901109:web:4fb8b309b0eac146fc41fc",
-
-    measurementId:
-      "G-40G6869742"
-
-  };
+    import {
+      getFirestore,
+      collection,
+      getDocs,
+      addDoc,
+      serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 
-  const app =
-    initializeApp(firebaseConfig);
+    /* =========================
+       FIREBASE
+    ========================= */
 
+    const firebaseConfig = {
 
-  const db =
-    getFirestore(app);
+      apiKey:
+        "AIzaSyA0redvM8Zg_UwUmhxvgt2zMpWFXwxMNK4",
 
+      authDomain:
+        "ramitos-de-pipa.firebaseapp.com",
 
-  /* =========================
-     MOSTRAR PRODUCTOS
-  ========================= */
+      projectId:
+        "ramitos-de-pipa",
 
-  async function cargarProductos() {
+      storageBucket:
+        "ramitos-de-pipa.firebasestorage.app",
 
-    try {
+      messagingSenderId:
+        "628847901109",
 
-      const snapshot =
-        await getDocs(
-          collection(
-            db,
-            "productos"
-          )
-        );
+      appId:
+        "1:628847901109:web:4fb8b309b0eac146fc41fc",
 
-
-      const productos = [];
-
-
-      snapshot.forEach(
-        function(docSnapshot) {
-
-          productos.push({
-
-            id:
-              docSnapshot.id,
-
-            ...docSnapshot.data()
-
-          });
-
-        }
-      );
-
-
-      mostrarProductos(
-        productos
-      );
-
-
-    } catch (error) {
-
-      console.error(
-        "Error al cargar productos:",
-        error
-      );
-
-    }
-
-  }
-
-
-  function mostrarProductos(
-    productos
-  ) {
-
-
-    const categorias = {
-
-      ramos:
-        document.querySelector(
-          "#ramos .products"
-        ),
-
-      flores:
-        document.querySelector(
-          "#flores .products"
-        ),
-
-      macetas:
-        document.querySelector(
-          "#macetas .products"
-        ),
-
-      llaveros:
-        document.querySelector(
-          "#llaveros .products"
-        ),
-
-      otro:
-        document.querySelector(
-          "#otros .products"
-        )
+      measurementId:
+        "G-40G6869742"
 
     };
 
 
-    /*
-      Limpiamos solamente
-      los productos existentes.
-    */
+    const app =
+      initializeApp(firebaseConfig);
 
-    Object.values(
-      categorias
-    ).forEach(
-      function(contenedor) {
 
-        if (contenedor) {
+    const db =
+      getFirestore(app);
 
-          contenedor.innerHTML =
-            "";
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    const productModal =
+      document.getElementById(
+        "productModal"
+      );
+
+
+    const productModalClose =
+      document.getElementById(
+        "productModalClose"
+      );
+
+
+    const modalName =
+      document.getElementById(
+        "productModalName"
+      );
+
+
+    const modalDescription =
+      document.getElementById(
+        "productModalDescription"
+      );
+
+
+    const modalPrice =
+      document.getElementById(
+        "productModalPrice"
+      );
+
+
+    const modalImage =
+      document.getElementById(
+        "productModalImage"
+      );
+
+
+    const modalWhatsApp =
+      document.getElementById(
+        "productModalWhatsApp"
+      );
+
+
+    function abrirModal(producto) {
+
+      modalName.textContent =
+        producto.nombre ||
+        "Producto";
+
+
+      modalDescription.textContent =
+        producto.descripcion ||
+        "Producto hecho a mano.";
+
+
+      const precio =
+        Number(
+          producto.precio || 0
+        );
+
+
+      modalPrice.textContent =
+        precio > 0
+          ? "₡" +
+            precio.toLocaleString(
+              "es-CR"
+            )
+          : "Precio según diseño";
+
+
+      modalImage.innerHTML = "";
+
+
+      if (
+        producto.imagenUrl &&
+        String(
+          producto.imagenUrl
+        ).trim() !== ""
+      ) {
+
+        const imagen =
+          document.createElement(
+            "img"
+          );
+
+
+        imagen.src =
+          producto.imagenUrl;
+
+
+        imagen.alt =
+          producto.nombre ||
+          "Producto";
+
+
+        modalImage.appendChild(
+          imagen
+        );
+
+      } else {
+
+        const emoji =
+          document.createElement(
+            "span"
+          );
+
+
+        emoji.style.fontSize =
+          "90px";
+
+
+        emoji.textContent =
+          "🌷";
+
+
+        modalImage.appendChild(
+          emoji
+        );
+
+      }
+
+
+      const mensaje =
+        encodeURIComponent(
+
+          "Hola 🌷, estoy interesada en: " +
+
+          (
+            producto.nombre ||
+            "un producto"
+          ) +
+
+          ". ¿Me pueden brindar más información?"
+
+        );
+
+
+      modalWhatsApp.href =
+        "https://wa.me/50685053551?text=" +
+        mensaje;
+
+
+      productModal.classList.add(
+        "active"
+      );
+
+      document.body.style.overflow =
+        "hidden";
+
+    }
+
+
+    function cerrarModal() {
+
+      productModal.classList.remove(
+        "active"
+      );
+
+      document.body.style.overflow =
+        "";
+
+    }
+
+
+    productModalClose.addEventListener(
+      "click",
+      cerrarModal
+    );
+
+
+    productModal.addEventListener(
+      "click",
+      function(event) {
+
+        if (
+          event.target ===
+          productModal
+        ) {
+
+          cerrarModal();
 
         }
 
@@ -1719,31 +1643,363 @@
     );
 
 
-    productos
-      .filter(
-        function(producto) {
+    document.addEventListener(
+      "keydown",
+      function(event) {
 
-          return (
-            producto.disponible === true
-          );
+        if (
+          event.key ===
+          "Escape"
+        ) {
+
+          cerrarModal();
 
         }
-      )
-      .forEach(
+
+      }
+    );
+
+
+    /* =========================
+       FAVORITOS ❤️
+    ========================= */
+
+    let favoritos =
+      JSON.parse(
+        localStorage.getItem(
+          "ramitosFavoritos"
+        ) || "[]"
+      );
+
+
+    function esFavorito(id) {
+
+      return favoritos.includes(id);
+
+    }
+
+
+    function cambiarFavorito(
+      id,
+      boton
+    ) {
+
+      if (
+        esFavorito(id)
+      ) {
+
+        favoritos =
+          favoritos.filter(
+            function(
+              favoritoId
+            ) {
+
+              return favoritoId !== id;
+
+            }
+          );
+
+      } else {
+
+        favoritos.push(id);
+
+      }
+
+
+      localStorage.setItem(
+        "ramitosFavoritos",
+        JSON.stringify(
+          favoritos
+        )
+      );
+
+
+      actualizarCorazon(
+        id,
+        boton
+      );
+
+    }
+
+
+    function actualizarCorazon(
+      id,
+      boton
+    ) {
+
+      if (
+        esFavorito(id)
+      ) {
+
+        boton.textContent =
+          "♥";
+
+        boton.classList.add(
+          "active"
+        );
+
+        boton.setAttribute(
+          "aria-label",
+          "Quitar de favoritos"
+        );
+
+      } else {
+
+        boton.textContent =
+          "♡";
+
+        boton.classList.remove(
+          "active"
+        );
+
+        boton.setAttribute(
+          "aria-label",
+          "Agregar a favoritos"
+        );
+
+      }
+
+    }
+
+
+    /* =========================
+       CARGAR PRODUCTOS
+    ========================= */
+
+    async function cargarProductos() {
+
+      try {
+
+        const snapshot =
+          await getDocs(
+            collection(
+              db,
+              "productos"
+            )
+          );
+
+
+        const productos = [];
+
+
+        snapshot.forEach(
+          function(docSnapshot) {
+
+            productos.push({
+
+              id:
+                docSnapshot.id,
+
+              ...docSnapshot.data()
+
+            });
+
+          }
+        );
+
+
+        console.log(
+          "Productos encontrados:",
+          productos
+        );
+
+
+        mostrarProductos(
+          productos
+        );
+
+
+      } catch (error) {
+
+        console.error(
+          "Error al cargar productos:",
+          error
+        );
+
+      }
+
+    }
+
+
+    /* =========================
+       NORMALIZAR CATEGORÍA
+    ========================= */
+
+    function obtenerCategoria(
+      producto
+    ) {
+
+      let categoria =
+        producto.categoria ||
+        producto.tipo ||
+        "otro";
+
+
+      categoria =
+        String(
+          categoria
+        )
+        .trim()
+        .toLowerCase();
+
+
+      const equivalencias = {
+
+        ramo:
+          "ramos",
+
+        ramos:
+          "ramos",
+
+        "ramo de flores":
+          "ramos",
+
+        "ramos de flores":
+          "ramos",
+
+        flor:
+          "flores",
+
+        flores:
+          "flores",
+
+        maceta:
+          "macetas",
+
+        macetas:
+          "macetas",
+
+        llavero:
+          "llaveros",
+
+        llaveros:
+          "llaveros"
+
+      };
+
+
+      return (
+        equivalencias[
+          categoria
+        ] ||
+        "otro"
+      );
+
+    }
+
+
+    /* =========================
+       MOSTRAR PRODUCTOS
+    ========================= */
+
+    function mostrarProductos(
+      productos
+    ) {
+
+      const categorias = {
+
+        ramos:
+          document.querySelector(
+            "#ramos .products"
+          ),
+
+        flores:
+          document.querySelector(
+            "#flores .products"
+          ),
+
+        macetas:
+          document.querySelector(
+            "#macetas .products"
+          ),
+
+        llaveros:
+          document.querySelector(
+            "#llaveros .products"
+          )
+
+      };
+
+
+      Object.values(
+        categorias
+      ).forEach(
+        function(contenedor) {
+
+          if (
+            contenedor
+          ) {
+
+            contenedor.innerHTML =
+              "";
+
+          }
+
+        }
+      );
+
+
+      const contadores = {
+
+        ramos: 0,
+
+        flores: 0,
+
+        macetas: 0,
+
+        llaveros: 0
+
+      };
+
+
+      productos.forEach(
         function(producto) {
+
+          /*
+            Solo ocultamos un producto
+            cuando disponible sea
+            explícitamente false.
+
+            Esto evita que un producto
+            antiguo desaparezca por
+            diferencias entre true,
+            "true" o campos faltantes.
+          */
+
+          if (
+            producto.disponible === false ||
+            producto.disponible === "false"
+          ) {
+
+            return;
+
+          }
 
 
           const categoria =
-            producto.categoria ||
-            "otro";
+            obtenerCategoria(
+              producto
+            );
 
 
           const contenedor =
-            categorias[categoria];
+            categorias[
+              categoria
+            ];
 
 
-          if (!contenedor) {
+          if (
+            !contenedor
+          ) {
+
+            console.warn(
+              "Categoría sin sección:",
+              categoria,
+              producto
+            );
+
             return;
+
           }
 
 
@@ -1755,473 +2011,466 @@
 
           tarjeta.className =
             "product";
-tarjeta.style.cursor =
-  "pointer";
-
-tarjeta.addEventListener(
-  "click",
-  function() {
-
-    const modal =
-      document.getElementById(
-        "productModal"
-      );
-
-    const modalName =
-      document.getElementById(
-        "productModalName"
-      );
-
-    const modalDescription =
-      document.getElementById(
-        "productModalDescription"
-      );
-
-    const modalPrice =
-      document.getElementById(
-        "productModalPrice"
-      );
-
-    const modalImage =
-      document.getElementById(
-        "productModalImage"
-      );
-
-    const modalWhatsApp =
-      document.getElementById(
-        "productModalWhatsApp"
-      );
 
 
-    modalName.textContent =
-      producto.nombre ||
-      "Producto";
+          tarjeta.style.cursor =
+            "pointer";
 
 
-    modalDescription.textContent =
-      producto.descripcion ||
-      "Producto hecho a mano.";
+          /* =====================
+             IMAGEN
+          ===================== */
+
+          const imagenContenedor =
+            document.createElement(
+              "div"
+            );
 
 
-    modalPrice.textContent =
-      "₡" +
-      Number(
-        producto.precio || 0
-      ).toLocaleString("es-CR");
-
-
-    if (producto.imagenUrl) {
-
-      modalImage.innerHTML = `
-        <img
-          src="${producto.imagenUrl}"
-          alt="${producto.nombre || "Producto"}"
-        >
-      `;
-
-    } else {
-
-      modalImage.innerHTML = `
-        <span style="font-size: 90px;">
-          🌷
-        </span>
-      `;
-
-    }
-
-
-    const mensaje =
-      encodeURIComponent(
-        "Hola 🌷, estoy interesada en: " +
-        (producto.nombre || "un producto") +
-        ". ¿Me pueden brindar más información?"
-      );
-
-
-    modalWhatsApp.href =
-      "https://wa.me/50685053551?text=" +
-      mensaje;
-
-
-    modal.classList.add(
-      "active"
-    );
-
-  }
-);
-
-
-    modalName.textContent =
-      producto.nombre ||
-      "Producto";
-
-
-    modalDescription.textContent =
-      producto.descripcion ||
-      "Producto hecho a mano.";
-
-
-    modalPrice.textContent =
-      "₡" +
-      Number(
-        producto.precio || 0
-      ).toLocaleString("es-CR");
-
-
-    if (producto.imagenUrl) {
-
-      modalImage.innerHTML = `
-        <img
-          src="${producto.imagenUrl}"
-          alt="${producto.nombre || "Producto"}"
-        >
-      `;
-
-    } else {
-
-      modalImage.innerHTML = `
-        <span style="font-size: 90px;">
-          🌷
-        </span>
-      `;
-
-    }
-
-
-    const mensaje =
-      encodeURIComponent(
-        "Hola 🌷, estoy interesada en: " +
-        (producto.nombre || "un producto") +
-        ". ¿Me pueden brindar más información?"
-      );
-
-
-    modalWhatsApp.href =
-      "https://wa.me/50685053551?text=" +
-      mensaje;
-
-
-    modal.classList.add(
-      "active"
-    );
-
-  }
-);
-    const mensaje =
-      encodeURIComponent(
-        "Hola 🌷, estoy interesada en: " +
-        (producto.nombre || "un producto") +
-        ". ¿Me pueden brindar más información?"
-      );
-
-
-    modalWhatsApp.href =
-      "https://wa.me/50685053551?text=" +
-      mensaje;
-
-
-    modal.classList.add(
-      "active"
-    );
-
-  }
-);
-
-          let imagenHTML = "";
+          imagenContenedor.className =
+            "product-image";
 
 
           if (
-            producto.imagenUrl
+            producto.imagenUrl &&
+            String(
+              producto.imagenUrl
+            ).trim() !== ""
           ) {
 
-            imagenHTML = `
+            const imagen =
+              document.createElement(
+                "img"
+              );
 
-              <img
-                src="${producto.imagenUrl}"
-                alt="${
-                  producto.nombre ||
-                  "Producto"
-                }"
-                style="
-                  width:100%;
-                  height:100%;
-                  object-fit:cover;
-                  border-radius:inherit;
-                "
-              >
 
-            `;
+            imagen.src =
+              producto.imagenUrl;
+
+
+            imagen.alt =
+              producto.nombre ||
+              "Producto";
+
+
+            imagen.onerror =
+              function() {
+
+                imagen.remove();
+
+
+                const emoji =
+                  document.createElement(
+                    "span"
+                  );
+
+
+                emoji.textContent =
+                  "🌷";
+
+
+                emoji.style.fontSize =
+                  "5rem";
+
+
+                imagenContenedor.appendChild(
+                  emoji
+                );
+
+              };
+
+
+            imagenContenedor.appendChild(
+              imagen
+            );
 
           } else {
 
-            imagenHTML = `
-
-              <div
-                style="
-                  width:100%;
-                  height:100%;
-                  display:flex;
-                  align-items:center;
-                  justify-content:center;
-                  font-size:50px;
-                "
-              >
-                🌷
-              </div>
-
-            `;
+            imagenContenedor.textContent =
+              "🌷";
 
           }
 
 
-          tarjeta.innerHTML = `
+          /* =====================
+             CORAZÓN
+          ===================== */
 
-            <div class="product-image">
-
-              ${imagenHTML}
-
-            </div>
-
-
-            <div class="product-info">
-
-              <h3>
-                ${
-                  producto.nombre ||
-                  "Producto"
-                }
-              </h3>
+          const favorito =
+            document.createElement(
+              "button"
+            );
 
 
-              <p>
-                ${
-                  producto.descripcion ||
-                  "Producto hecho a mano."
-                }
-              </p>
+          favorito.type =
+            "button";
 
 
-              <span class="price">
+          favorito.className =
+            "favorite-button";
 
-                ₡${
-                  Number(
-                    producto.precio || 0
-                  ).toLocaleString(
-                    "es-CR"
-                  )
-                }
 
-              </span>
+          actualizarCorazon(
+            producto.id,
+            favorito
+          );
 
-            </div>
 
-          `;
+          favorito.addEventListener(
+            "click",
+            function(event) {
+
+              event.stopPropagation();
+
+
+              cambiarFavorito(
+                producto.id,
+                favorito
+              );
+
+            }
+          );
+
+
+          imagenContenedor.appendChild(
+            favorito
+          );
+
+
+          /* =====================
+             INFORMACIÓN
+          ===================== */
+
+          const info =
+            document.createElement(
+              "div"
+            );
+
+
+          info.className =
+            "product-info";
+
+
+          const nombre =
+            document.createElement(
+              "h3"
+            );
+
+
+          nombre.textContent =
+            producto.nombre ||
+            "Producto";
+
+
+          const descripcion =
+            document.createElement(
+              "p"
+            );
+
+
+          descripcion.textContent =
+            producto.descripcion ||
+            "Producto hecho a mano.";
+
+
+          const precio =
+            document.createElement(
+              "span"
+            );
+
+
+          precio.className =
+            "price";
+
+
+          const valorPrecio =
+            Number(
+              producto.precio || 0
+            );
+
+
+          if (
+            valorPrecio > 0
+          ) {
+
+            precio.textContent =
+              "₡" +
+              valorPrecio.toLocaleString(
+                "es-CR"
+              );
+
+          } else {
+
+            precio.textContent =
+              "Precio según diseño";
+
+          }
+
+
+          info.appendChild(
+            nombre
+          );
+
+
+          info.appendChild(
+            descripcion
+          );
+
+
+          info.appendChild(
+            precio
+          );
+
+
+          tarjeta.appendChild(
+            imagenContenedor
+          );
+
+
+          tarjeta.appendChild(
+            info
+          );
+
+
+          /* =====================
+             CLICK TARJETA
+          ===================== */
+
+          tarjeta.addEventListener(
+            "click",
+            function() {
+
+              abrirModal(
+                producto
+              );
+
+            }
+          );
 
 
           contenedor.appendChild(
             tarjeta
           );
 
+
+          contadores[
+            categoria
+          ]++;
+
         }
       );
 
-  }
 
-const productModal =
-  document.getElementById(
-    "productModal"
-  );
+      /* =========================
+         MENSAJES VACÍOS
+      ========================= */
 
-const productModalClose =
-  document.getElementById(
-    "productModalClose"
-  );
+      Object.keys(
+        categorias
+      ).forEach(
+        function(categoria) {
 
-
-productModalClose.addEventListener(
-  "click",
-  function() {
-
-    productModal.classList.remove(
-      "active"
-    );
-
-  }
-);
+          const contenedor =
+            categorias[
+              categoria
+            ];
 
 
-productModal.addEventListener(
-  "click",
-  function(event) {
+          if (
+            contenedor &&
+            contadores[
+              categoria
+            ] === 0
+          ) {
 
-    if (
-      event.target ===
-      productModal
-    ) {
+            const mensaje =
+              document.createElement(
+                "p"
+              );
 
-      productModal.classList.remove(
-        "active"
+
+            mensaje.className =
+              "empty-products";
+
+
+            mensaje.textContent =
+              "Próximamente tendremos productos disponibles 🌷";
+
+
+            contenedor.appendChild(
+              mensaje
+            );
+
+          }
+
+        }
       );
 
     }
 
-  }
-);
-  /* =========================
-     SOLICITUDES PERSONALIZADAS
-  ========================= */
 
-  const form =
-    document.getElementById(
-      "personalizedForm"
-    );
+    /* =========================
+       SOLICITUDES PERSONALIZADAS
+    ========================= */
 
-
-  if (form) {
-
-    form.addEventListener(
-      "submit",
-      async function(event) {
-
-        event.preventDefault();
+    const form =
+      document.getElementById(
+        "personalizedForm"
+      );
 
 
-        const nombre =
-          document.getElementById(
-            "nombre"
-          ).value;
+    if (
+      form
+    ) {
+
+      form.addEventListener(
+        "submit",
+        async function(event) {
+
+          event.preventDefault();
 
 
-        const telefono =
-          document.getElementById(
-            "telefono"
-          ).value;
+          const nombre =
+            document.getElementById(
+              "nombre"
+            ).value;
 
 
-        const tipo =
-          document.getElementById(
-            "tipo"
-          ).value;
+          const telefono =
+            document.getElementById(
+              "telefono"
+            ).value;
 
 
-        const idea =
-          document.getElementById(
-            "idea"
-          ).value;
+          const tipo =
+            document.getElementById(
+              "tipo"
+            ).value;
 
 
-        try {
-
-          await addDoc(
-            collection(
-              db,
-              "solicitudes"
-            ),
-            {
-
-              nombre:
-                nombre,
-
-              telefono:
-                telefono,
-
-              tipo:
-                tipo,
-
-              idea:
-                idea,
-
-              fecha:
-                serverTimestamp()
-
-            }
-          );
+          const idea =
+            document.getElementById(
+              "idea"
+            ).value;
 
 
-          const enviarWhatsApp =
-            confirm(
+          try {
 
-              "💗 ¡Tu solicitud fue enviada correctamente!\n\n" +
+            await addDoc(
+              collection(
+                db,
+                "solicitudes"
+              ),
+              {
 
-              "📷 Si tienes una imagen de referencia, " +
+                nombre:
+                  nombre,
 
-              "puedes enviarla ahora por WhatsApp."
+                telefono:
+                  telefono,
 
+                tipo:
+                  tipo,
+
+                idea:
+                  idea,
+
+                fecha:
+                  serverTimestamp()
+
+              }
             );
 
 
-          if (enviarWhatsApp) {
+            const enviarWhatsApp =
+              confirm(
 
+                "💗 ¡Tu solicitud fue enviada correctamente!\n\n" +
 
-            const mensaje =
-              encodeURIComponent(
+                "📷 Si tienes una imagen de referencia, " +
 
-                "🌷 NUEVA SOLICITUD — RAMITOS DE PIPA 🌷\n\n" +
-
-                "👤 Nombre: " +
-                nombre +
-                "\n" +
-
-                "📱 Teléfono: " +
-                telefono +
-                "\n" +
-
-                "💐 Producto: " +
-                tipo +
-                "\n" +
-
-                "💭 Idea: " +
-                idea +
-                "\n\n" +
-
-                "📷 La imagen de referencia se enviará por este chat."
+                "puedes enviarla ahora por WhatsApp."
 
               );
 
 
-            window.open(
+            if (
+              enviarWhatsApp
+            ) {
 
-              "https://wa.me/50685053551?text=" +
-              mensaje,
+              const mensaje =
+                encodeURIComponent(
 
-              "_blank"
+                  "🌷 NUEVA SOLICITUD — RAMITOS DE PIPA 🌷\n\n" +
+
+                  "👤 Nombre: " +
+                  nombre +
+                  "\n" +
+
+                  "📱 Teléfono: " +
+                  telefono +
+                  "\n" +
+
+                  "💐 Producto: " +
+                  tipo +
+                  "\n" +
+
+                  "💭 Idea: " +
+                  idea +
+                  "\n\n" +
+
+                  "📷 La imagen de referencia se enviará por este chat."
+
+                );
+
+
+              window.open(
+
+                "https://wa.me/50685053551?text=" +
+                mensaje,
+
+                "_blank"
+
+              );
+
+            }
+
+
+            form.reset();
+
+
+          } catch (error) {
+
+            console.error(
+              "Error:",
+              error
+            );
+
+
+            alert(
+
+              "😭 No pudimos enviar tu solicitud. " +
+
+              "Por favor intenta nuevamente."
 
             );
 
           }
 
-
-          form.reset();
-
-
-        } catch (error) {
-
-          console.error(
-            "Error:",
-            error
-          );
-
-
-          alert(
-
-            "😭 No pudimos enviar tu solicitud. " +
-
-            "Por favor intenta nuevamente."
-
-          );
-
         }
+      );
 
-      }
-    );
-
-  }
+    }
 
 
-  /* =========================
-     INICIAR
-  ========================= */
+    /* =========================
+       INICIAR PÁGINA
+    ========================= */
 
-  cargarProductos();
+    cargarProductos();
 
-</script>
+  </script>
+
+</body>
+
+</html>
