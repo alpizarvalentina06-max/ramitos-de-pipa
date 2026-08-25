@@ -1849,6 +1849,64 @@ tarjeta.addEventListener(
 
   }
 );
+
+
+    modalName.textContent =
+      producto.nombre ||
+      "Producto";
+
+
+    modalDescription.textContent =
+      producto.descripcion ||
+      "Producto hecho a mano.";
+
+
+    modalPrice.textContent =
+      "₡" +
+      Number(
+        producto.precio || 0
+      ).toLocaleString("es-CR");
+
+
+    if (producto.imagenUrl) {
+
+      modalImage.innerHTML = `
+        <img
+          src="${producto.imagenUrl}"
+          alt="${producto.nombre || "Producto"}"
+        >
+      `;
+
+    } else {
+
+      modalImage.innerHTML = `
+        <span style="font-size: 90px;">
+          🌷
+        </span>
+      `;
+
+    }
+
+
+    const mensaje =
+      encodeURIComponent(
+        "Hola 🌷, estoy interesada en: " +
+        (producto.nombre || "un producto") +
+        ". ¿Me pueden brindar más información?"
+      );
+
+
+    modalWhatsApp.href =
+      "https://wa.me/50685053551?text=" +
+      mensaje;
+
+
+    modal.classList.add(
+      "active"
+    );
+
+  }
+);
     const mensaje =
       encodeURIComponent(
         "Hola 🌷, estoy interesada en: " +
