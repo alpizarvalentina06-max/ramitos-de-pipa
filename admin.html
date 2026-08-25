@@ -183,7 +183,7 @@
 
       <button
         class="add-button"
-        onclick="agregarProducto()"
+        id="addProductButton"
       >
         ➕ Agregar producto
       </button>
@@ -442,43 +442,61 @@
     };
 
 
-  window.agregarProducto = function() {
+  const addProductButton =
+  document.getElementById("addProductButton");
 
-  const nombre = prompt("🌷 Nombre del producto:");
-  if (!nombre) return;
+addProductButton.addEventListener(
+  "click",
+  function() {
 
-  const categoria = prompt(
-    "📂 Categoría:\n\n" +
-    "Escribe una de estas:\n" +
-    "ramos\n" +
-    "flores\n" +
-    "macetas\n" +
-    "llaveros\n" +
-    "otro"
-  );
+    const nombre = prompt(
+      "🌷 Nombre del producto:"
+    );
 
-  if (!categoria) return;
+    if (!nombre) return;
 
-  const precio = prompt("💰 Precio del producto:");
-  if (!precio) return;
 
-  const descripcion = prompt(
-    "📝 Descripción del producto:"
-  );
+    const categoria = prompt(
+      "📂 Categoría:\n\n" +
+      "Escribe una de estas:\n" +
+      "ramos\n" +
+      "flores\n" +
+      "macetas\n" +
+      "llaveros\n" +
+      "otro"
+    );
 
-  if (!descripcion) return;
+    if (!categoria) return;
 
-  const disponible = confirm(
-    "✅ ¿El producto está disponible?"
-  );
 
-  alert(
-    "🌷 Producto preparado.\n\n" +
-    "En el siguiente paso añadiremos " +
-    "la fotografía y lo guardaremos " +
-    "automáticamente en Firebase."
-  );
+    const precio = prompt(
+      "💰 Precio del producto:"
+    );
 
+    if (!precio) return;
+
+
+    const descripcion = prompt(
+      "📝 Descripción del producto:"
+    );
+
+    if (!descripcion) return;
+
+
+    const disponible = confirm(
+      "✅ ¿El producto está disponible?"
+    );
+
+
+    alert(
+      "🌷 Producto preparado.\n\n" +
+      "En el siguiente paso añadiremos " +
+      "la fotografía y lo guardaremos " +
+      "automáticamente en Firebase."
+    );
+
+  }
+);
 };
 
   cargarProductos();
