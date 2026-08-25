@@ -588,39 +588,38 @@
       );
 
 
-    addProductButton
-  .addEventListener(
-    "click",
-    function() {
+    addProductButton.addEventListener(
+  "click",
+  function() {
 
-      productoEditando = null;
+    productoEditando = null;
 
-      imagenActual = "";
+    imagenActual = "";
 
-      modalTitle.textContent =
-        "🌷 Agregar producto";
+    modalTitle.textContent =
+      "🌷 Agregar producto";
 
-      productName.value = "";
+    productName.value = "";
 
-      productCategory.value = "ramos";
+    productCategory.value = "ramos";
 
-      productPrice.value = "";
+    productPrice.value = "";
 
-      productDescription.value = "";
+    productDescription.value = "";
 
-      productAvailable.value = "true";
+    productAvailable.value = "true";
 
-      productImage.value = "";
+    productImage.value = "";
 
-      imagePreview.style.display =
-        "none";
+    imagePreview.style.display =
+      "none";
 
-      productModal.classList.add(
-        "active"
-      );
+    productModal.classList.add(
+      "active"
+    );
 
-    }
-  );
+  }
+);
 
 
     cargarProductos();
