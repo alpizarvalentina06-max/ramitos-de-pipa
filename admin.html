@@ -30,7 +30,7 @@
 
     header {
       background: #f7c9dc;
-      padding: 25px 20px;
+      padding: 25px;
       text-align: center;
     }
 
@@ -49,7 +49,7 @@
     main {
       max-width: 1000px;
       margin: 30px auto;
-      padding: 0 20px 40px;
+      padding: 0 20px;
     }
 
 
@@ -124,14 +124,17 @@
 
     .product-image {
       width: 100%;
-      height: 200px;
+      height: 180px;
       background: #f5e5ed;
       border-radius: 14px;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+
+      font-size: 50px;
       margin-bottom: 15px;
+      overflow: hidden;
     }
 
 
@@ -139,11 +142,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
-
-
-    .placeholder {
-      font-size: 55px;
     }
 
 
@@ -173,8 +171,8 @@
 
 
     .unavailable {
-      background: #eeeeee;
-      color: #666666;
+      background: #f5dddd;
+      color: #9b4141;
     }
 
 
@@ -192,7 +190,7 @@
 
 
     .hide {
-      background: #eeeeee;
+      background: #eee;
     }
 
 
@@ -206,7 +204,6 @@
       padding: 50px 20px;
       background: white;
       border-radius: 18px;
-      grid-column: 1 / -1;
     }
 
 
@@ -217,34 +214,44 @@
 
     .modal {
       display: none;
+
       position: fixed;
       inset: 0;
+
       background: rgba(0, 0, 0, 0.45);
-      z-index: 9999;
+
+      align-items: center;
+      justify-content: center;
+
       padding: 20px;
-      overflow-y: auto;
+
+      z-index: 1000;
     }
 
 
     .modal.show {
       display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
 
-    .modal-box {
-      background: white;
+    .modal-content {
       width: 100%;
       max-width: 500px;
+
+      background: white;
+
       border-radius: 20px;
+
       padding: 25px;
+
+      max-height: 90vh;
+
+      overflow-y: auto;
     }
 
 
-    .modal-box h2 {
+    .modal-content h2 {
       margin-top: 0;
-      margin-bottom: 20px;
     }
 
 
@@ -255,8 +262,8 @@
 
     .form-group label {
       display: block;
-      font-weight: bold;
       margin-bottom: 7px;
+      font-weight: bold;
     }
 
 
@@ -264,35 +271,20 @@
     .form-group select,
     .form-group textarea {
       width: 100%;
+
       padding: 12px;
-      border: 1px solid #e0c2d0;
+
+      border: 1px solid #dfbfd0;
+
       border-radius: 10px;
+
       font-size: 15px;
-      font-family: Arial, sans-serif;
     }
 
 
     .form-group textarea {
       min-height: 100px;
       resize: vertical;
-    }
-
-
-    .preview {
-      display: none;
-      width: 100%;
-      height: 180px;
-      margin-top: 10px;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #f5e5ed;
-    }
-
-
-    .preview img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
 
 
@@ -311,7 +303,7 @@
 
 
     .cancel-button {
-      background: #eeeeee;
+      background: #eee;
       flex: 1;
     }
 
@@ -323,17 +315,17 @@
       }
 
 
+      .top-bar {
+        align-items: stretch;
+      }
+
+
       .add-button {
         width: 100%;
       }
 
 
-      .modal {
-        padding: 10px;
-      }
-
-
-      .modal-box {
+      .modal-content {
         padding: 20px;
       }
 
@@ -349,9 +341,7 @@
 
   <header>
 
-    <h1>
-      🌷 Ramitos de Pipa
-    </h1>
+    <h1>🌷 Ramitos de Pipa</h1>
 
     <p>
       Panel de administración
@@ -371,8 +361,8 @@
 
 
       <button
-        id="addProductButton"
         class="add-button"
+        id="addProductButton"
       >
         ➕ Agregar producto
       </button>
@@ -381,6 +371,7 @@
 
 
     <div class="categories">
+
 
       <button
         class="category-button active"
@@ -429,6 +420,7 @@
         📦 Otros
       </button>
 
+
     </div>
 
 
@@ -447,12 +439,13 @@
 
     </div>
 
+
   </main>
 
 
 
   <!-- =========================
-       FORMULARIO
+       MODAL AGREGAR / EDITAR
   ========================= -->
 
 
@@ -461,7 +454,9 @@
     class="modal"
   >
 
-    <div class="modal-box">
+
+    <div class="modal-content">
+
 
       <h2 id="modalTitle">
         🌷 Agregar producto
@@ -470,14 +465,14 @@
 
       <div class="form-group">
 
-        <label for="productName">
-          Nombre del producto
+        <label>
+          🌷 Nombre del producto
         </label>
 
         <input
           type="text"
           id="productName"
-          placeholder="Ej. Ramo de rosas"
+          placeholder="Ejemplo: Ramo de flores"
         >
 
       </div>
@@ -485,8 +480,8 @@
 
       <div class="form-group">
 
-        <label for="productCategory">
-          Categoría
+        <label>
+          📂 Categoría
         </label>
 
         <select id="productCategory">
@@ -518,15 +513,15 @@
 
       <div class="form-group">
 
-        <label for="productPrice">
-          Precio
+        <label>
+          💰 Precio
         </label>
 
         <input
           type="number"
           id="productPrice"
+          placeholder="Ejemplo: 5000"
           min="0"
-          placeholder="Ej. 8500"
         >
 
       </div>
@@ -534,8 +529,8 @@
 
       <div class="form-group">
 
-        <label for="productDescription">
-          Descripción
+        <label>
+          📝 Descripción
         </label>
 
         <textarea
@@ -548,37 +543,23 @@
 
       <div class="form-group">
 
-        <label for="productImage">
-          📷 Fotografía
+        <label>
+          📷 Imagen
         </label>
 
-        <input
-          type="file"
-          id="productImage"
-          accept="image/*"
-        >
-
-
-        <div
-          id="imagePreview"
-          class="preview"
-        >
-
-          <img
-            id="previewImage"
-            src=""
-            alt="Vista previa"
-          >
-
-        </div>
+        <p style="font-size: 13px; color: #777;">
+          Por ahora guardaremos el producto
+          sin fotografía. La conexión con
+          Cloudinary la hacemos después.
+        </p>
 
       </div>
 
 
       <div class="form-group">
 
-        <label for="productAvailable">
-          Disponibilidad
+        <label>
+          📦 Disponibilidad
         </label>
 
         <select id="productAvailable">
@@ -598,32 +579,30 @@
 
       <div class="modal-buttons">
 
+
         <button
-          id="cancelButton"
           class="cancel-button"
+          id="cancelButton"
         >
           Cancelar
         </button>
 
 
         <button
-          id="saveProductButton"
           class="save-button"
+          id="saveProductButton"
         >
           💾 Guardar producto
         </button>
 
+
       </div>
+
 
     </div>
 
   </div>
 
-
-
-  <!-- =========================
-       FIREBASE
-  ========================= -->
 
 
   <script type="module">
@@ -642,10 +621,15 @@
       addDoc,
       updateDoc,
       deleteDoc,
-      doc,
-      serverTimestamp
+      doc
     } from
       "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+
+
+    /* =========================
+       FIREBASE
+    ========================= */
 
 
     const firebaseConfig = {
@@ -738,27 +722,9 @@
       );
 
 
-    const productImage =
-      document.getElementById(
-        "productImage"
-      );
-
-
     const productAvailable =
       document.getElementById(
         "productAvailable"
-      );
-
-
-    const imagePreview =
-      document.getElementById(
-        "imagePreview"
-      );
-
-
-    const previewImage =
-      document.getElementById(
-        "previewImage"
       );
 
 
@@ -776,9 +742,8 @@
 
     let productos = [];
 
-    let productoEditando = null;
 
-    let imagenActual = "";
+    let productoEditando = null;
 
 
 
@@ -827,7 +792,7 @@
       } catch (error) {
 
         console.error(
-          "Error:",
+          "Error al cargar productos:",
           error
         );
 
@@ -837,13 +802,12 @@
           <div class="empty">
 
             <h3>
-              😭 No pudimos cargar
+              😭 Error al cargar
               los productos
             </h3>
 
             <p>
-              Revisa la conexión
-              con Firebase.
+              ${error.message}
             </p>
 
           </div>
@@ -864,6 +828,7 @@
     function mostrarProductos(
       categoria
     ) {
+
 
       productsContainer.innerHTML =
         "";
@@ -892,7 +857,9 @@
       }
 
 
-      if (lista.length === 0) {
+      if (
+        lista.length === 0
+      ) {
 
         productsContainer.innerHTML = `
 
@@ -919,6 +886,7 @@
       lista.forEach(
         function(producto) {
 
+
           const tarjeta =
             document.createElement(
               "div"
@@ -929,39 +897,23 @@
             "product-card";
 
 
-          let imagen = `
-
-            <div class="placeholder">
-              🌷
-            </div>
-
-          `;
-
-
-          if (
-            producto.imagenUrl
-          ) {
-
-            imagen = `
-
-              <img
-                src="${producto.imagenUrl}"
-                alt="${
-                  producto.nombre ||
-                  "Producto"
-                }"
-              >
-
-            `;
-
-          }
-
-
           tarjeta.innerHTML = `
 
             <div class="product-image">
 
-              ${imagen}
+              ${
+                producto.imagenUrl
+                  ? `
+                    <img
+                      src="${producto.imagenUrl}"
+                      alt="${
+                        producto.nombre ||
+                        "Producto"
+                      }"
+                    >
+                  `
+                  : "🌷"
+              }
 
             </div>
 
@@ -1008,6 +960,7 @@
 
             <div class="actions">
 
+
               <button
                 class="edit"
                 data-id="${producto.id}"
@@ -1020,11 +973,13 @@
                 class="hide"
                 data-id="${producto.id}"
               >
+
                 ${
                   producto.disponible
                     ? "👁️ Ocultar"
                     : "👁️ Mostrar"
                 }
+
               </button>
 
 
@@ -1034,6 +989,7 @@
               >
                 🗑️ Eliminar
               </button>
+
 
             </div>
 
@@ -1055,7 +1011,7 @@
 
 
     /* =========================
-       BOTONES PRODUCTOS
+       BOTONES DE PRODUCTOS
     ========================= */
 
 
@@ -1126,7 +1082,7 @@
 
 
     /* =========================
-       ABRIR AGREGAR
+       AGREGAR PRODUCTO
     ========================= */
 
 
@@ -1134,33 +1090,33 @@
       "click",
       function() {
 
-        productoEditando = null;
 
-        imagenActual = "";
+        productoEditando =
+          null;
 
 
         modalTitle.textContent =
           "🌷 Agregar producto";
 
 
-        productName.value = "";
+        productName.value =
+          "";
+
 
         productCategory.value =
           "ramos";
 
-        productPrice.value = "";
+
+        productPrice.value =
+          "";
+
 
         productDescription.value =
           "";
 
+
         productAvailable.value =
           "true";
-
-        productImage.value = "";
-
-
-        imagePreview.style.display =
-          "none";
 
 
         productModal.classList.add(
@@ -1191,103 +1147,61 @@
 
 
     /* =========================
-       PREVISUALIZAR IMAGEN
+       EDITAR PRODUCTO
     ========================= */
 
 
-    productImage.addEventListener(
-      "change",
-      function() {
-
-        const archivo =
-          productImage.files[0];
-
-
-        if (!archivo) {
-
-          imagePreview.style.display =
-            "none";
-
-          return;
-
-        }
-
-
-        const reader =
-          new FileReader();
-
-
-        reader.onload =
-          function(event) {
-
-            previewImage.src =
-              event.target.result;
-
-
-            imagePreview.style.display =
-              "block";
-
-          };
-
-
-        reader.readAsDataURL(
-          archivo
-        );
-
-      }
-    );
-
-
-
-    /* =========================
-       SUBIR A CLOUDINARY
-    ========================= */
-
-
-    async function subirImagen(
-      archivo
+    function editarProducto(
+      id
     ) {
 
-      const formData =
-        new FormData();
 
+      const producto =
+        productos.find(
+          function(item) {
 
-      formData.append(
-        "file",
-        archivo
-      );
+            return item.id === id;
 
-
-      formData.append(
-        "upload_preset",
-        "ramitos_productos"
-      );
-
-
-      const respuesta =
-        await fetch(
-          "https://api.cloudinary.com/v1_1/escxwgi4/image/upload",
-          {
-            method: "POST",
-            body: formData
           }
         );
 
 
-      if (!respuesta.ok) {
+      if (!producto) return;
 
-        throw new Error(
-          "Cloudinary no pudo subir la imagen."
+
+      productoEditando =
+        id;
+
+
+      modalTitle.textContent =
+        "✏️ Editar producto";
+
+
+      productName.value =
+        producto.nombre || "";
+
+
+      productCategory.value =
+        producto.categoria || "ramos";
+
+
+      productPrice.value =
+        producto.precio || "";
+
+
+      productDescription.value =
+        producto.descripcion || "";
+
+
+      productAvailable.value =
+        String(
+          producto.disponible !== false
         );
 
-      }
 
-
-      const datos =
-        await respuesta.json();
-
-
-      return datos.secure_url;
+      productModal.classList.add(
+        "show"
+      );
 
     }
 
@@ -1302,504 +1216,322 @@
       "click",
       async function() {
 
-        try {
 
-          const nombre =
-            productName.value.trim();
+        const nombre =
+          productName.value.trim();
 
 
-          const categoria =
-            productCategory.value;
+        const categoria =
+          productCategory.value;
 
 
-          const precio =
-            Number(
-              productPrice.value
-            );
-
-
-          const descripcion =
-            productDescription.value.trim();
-
-
-          const disponible =
-            productAvailable.value ===
-            "true";
-
-
-          if (!nombre) {
-
-            alert(
-              "🌷 Escribe el nombre."
-            );
-
-            return;
-
-          }
-
-
-          if (
-            !precio ||
-            precio < 0
-          ) {
-
-            alert(
-              "💰 Escribe un precio válido."
-            );
-
-            return;
-
-          }
-
-
-          if (!descripcion) {
-
-            alert(
-              "📝 Escribe una descripción."
-            );
-
-            return;
-
-          }
-
-
-          saveProductBut    .product-image {
-      width: 100%;
-      height: 180px;
-      background: #f5e5ed;
-      border-radius: 14px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 50px;
-      margin-bottom: 15px;
-    }
-
-    .product-card h3 {
-      margin: 5px 0;
-    }
-
-    .product-card p {
-      margin: 7px 0;
-    }
-
-    .status {
-      display: inline-block;
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 13px;
-      margin: 8px 0;
-
-      background: #e5f5e8;
-      color: #397345;
-    }
-
-    .actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 15px;
-      flex-wrap: wrap;
-    }
-
-    .edit {
-      background: #ead4f5;
-    }
-
-    .hide {
-      background: #eee;
-    }
-
-    .delete {
-      background: #f3c4c4;
-    }
-
-    .empty {
-      text-align: center;
-      padding: 50px 20px;
-      background: white;
-      border-radius: 18px;
-    }
-
-    @media (max-width: 600px) {
-
-      header h1 {
-        font-size: 23px;
-      }
-
-      .top-bar {
-        align-items: stretch;
-      }
-
-      .add-button {
-        width: 100%;
-      }
-
-    }
-
-  </style>
-
-</head>
-
-
-<body>
-
-  <header>
-
-    <h1>🌷 Ramitos de Pipa</h1>
-
-    <p>
-      Panel de administración
-    </p>
-
-  </header>
-
-
-  <main>
-
-    <div class="top-bar">
-
-      <h2>
-        🌸 Productos
-      </h2>
-
-      <button
-        class="add-button"
-        id="addProductButton"
-      >
-        ➕ Agregar producto
-      </button>
-
-    </div>
-
-
-    <div class="categories">
-
-      <button
-        class="category-button active"
-        data-category="todos"
-      >
-        Todos
-      </button>
-
-      <button
-        class="category-button"
-        data-category="ramos"
-      >
-        💐 Ramos
-      </button>
-
-      <button
-        class="category-button"
-        data-category="flores"
-      >
-        🌸 Flores
-      </button>
-
-      <button
-        class="category-button"
-        data-category="macetas"
-      >
-        🪴 Macetas
-      </button>
-
-      <button
-        class="category-button"
-        data-category="llaveros"
-      >
-        🔑 Llaveros
-      </button>
-
-      <button
-        class="category-button"
-        data-category="otro"
-      >
-        📦 Otros
-      </button>
-
-    </div>
-
-
-    <div
-      id="products"
-      class="products"
-    >
-
-      <div class="empty">
-
-        <h3>
-          🌷 Cargando productos...
-        </h3>
-
-      </div>
-
-    </div>
-
-  </main>
-
-
-  <script type="module">
-
-    import {
-      initializeApp
-    } from
-      "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-
-
-    import {
-      getFirestore,
-      collection,
-      getDocs
-    } from
-      "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
-
-
-    const firebaseConfig = {
-
-      apiKey:
-        "AIzaSyA0redvM8Zg_UwUmhxvgt2zMpWFXwxMNK4",
-
-      authDomain:
-        "ramitos-de-pipa.firebaseapp.com",
-
-      projectId:
-        "ramitos-de-pipa",
-
-      storageBucket:
-        "ramitos-de-pipa.firebasestorage.app",
-
-      messagingSenderId:
-        "628847901109",
-
-      appId:
-        "1:628847901109:web:4fb8b309b0eac146fc41fc",
-
-      measurementId:
-        "G-40G6869742"
-
-    };
-
-
-    const app =
-      initializeApp(firebaseConfig);
-
-
-    const db =
-      getFirestore(app);
-
-
-    const productsContainer =
-      document.getElementById("products");
-
-
-    const addProductButton =
-      document.getElementById(
-        "addProductButton"
-      );
-
-
-    let productos = [];
-
-
-    async function cargarProductos() {
-
-      try {
-
-        const snapshot =
-          await getDocs(
-            collection(
-              db,
-              "productos"
-            )
+        const precio =
+          Number(
+            productPrice.value
           );
 
 
-        productos = [];
+        const descripcion =
+          productDescription.value.trim();
 
 
-        snapshot.forEach(
-          function(doc) {
+        const disponible =
+          productAvailable.value ===
+          "true";
 
-            productos.push({
 
-              id: doc.id,
+        if (!nombre) {
 
-              ...doc.data()
+          alert(
+            "🌷 Escribe el nombre del producto."
+          );
 
-            });
+          return;
+
+        }
+
+
+        if (
+          !productPrice.value
+        ) {
+
+          alert(
+            "💰 Escribe el precio."
+          );
+
+          return;
+
+        }
+
+
+        saveProductButton.disabled =
+          true;
+
+
+        saveProductButton.textContent =
+          "⏳ Guardando...";
+
+
+        try {
+
+
+          if (
+            productoEditando
+          ) {
+
+
+            await updateDoc(
+              doc(
+                db,
+                "productos",
+                productoEditando
+              ),
+              {
+
+                nombre:
+                  nombre,
+
+                categoria:
+                  categoria,
+
+                precio:
+                  precio,
+
+                descripcion:
+                  descripcion,
+
+                disponible:
+                  disponible
+
+              }
+            );
+
+
+            alert(
+              "✅ Producto actualizado correctamente."
+            );
+
+
+          } else {
+
+
+            await addDoc(
+              collection(
+                db,
+                "productos"
+              ),
+              {
+
+                nombre:
+                  nombre,
+
+                categoria:
+                  categoria,
+
+                precio:
+                  precio,
+
+                descripcion:
+                  descripcion,
+
+                disponible:
+                  disponible,
+
+                imagenUrl:
+                  ""
+
+              }
+            );
+
+
+            alert(
+              "🌷 ¡Producto agregado correctamente!"
+            );
+
+          }
+
+
+          productModal.classList.remove(
+            "show"
+          );
+
+
+          productoEditando =
+            null;
+
+
+          await cargarProductos();
+
+
+        } catch (error) {
+
+
+          console.error(
+            "Error al guardar:",
+            error
+          );
+
+
+          alert(
+            "😭 No pudimos guardar el producto.\n\n" +
+            error.message
+          );
+
+
+        } finally {
+
+
+          saveProductButton.disabled =
+            false;
+
+
+          saveProductButton.textContent =
+            "💾 Guardar producto";
+
+        }
+
+      }
+    );
+
+
+
+    /* =========================
+       OCULTAR / MOSTRAR
+    ========================= */
+
+
+    async function cambiarDisponibilidad(
+      id
+    ) {
+
+
+      const producto =
+        productos.find(
+          function(item) {
+
+            return item.id === id;
 
           }
         );
 
 
-        mostrarProductos("todos");
+      if (!producto) return;
+
+
+      try {
+
+
+        await updateDoc(
+          doc(
+            db,
+            "productos",
+            id
+          ),
+          {
+
+            disponible:
+              !producto.disponible
+
+          }
+        );
+
+
+        await cargarProductos();
 
 
       } catch (error) {
 
+
         console.error(
-          "Error al cargar productos:",
           error
         );
 
 
-        productsContainer.innerHTML = `
-
-          <div class="empty">
-
-            <h3>
-              😭 No pudimos cargar
-              los productos
-            </h3>
-
-            <p>
-              Revisa la conexión
-              con Firebase.
-            </p>
-
-          </div>
-
-        `;
+        alert(
+          "😭 No pudimos cambiar la disponibilidad."
+        );
 
       }
 
     }
 
 
-    function mostrarProductos(
-      categoria
+
+    /* =========================
+       ELIMINAR
+    ========================= */
+
+
+    async function eliminarProducto(
+      id
     ) {
 
-      productsContainer.innerHTML =
-        "";
+
+      const producto =
+        productos.find(
+          function(item) {
+
+            return item.id === id;
+
+          }
+        );
 
 
-      let lista =
-        productos;
+      if (!producto) return;
 
 
-      if (
-        categoria !== "todos"
-      ) {
+      const confirmar =
+        confirm(
+          "🗑️ ¿Seguro que quieres eliminar \"" +
+          producto.nombre +
+          "\"?"
+        );
 
-        lista =
-          productos.filter(
-            function(producto) {
 
-              return (
-                producto.categoria ===
-                categoria
-              );
+      if (!confirmar) return;
 
-            }
-          );
+
+      try {
+
+
+        await deleteDoc(
+          doc(
+            db,
+            "productos",
+            id
+          )
+        );
+
+
+        alert(
+          "🗑️ Producto eliminado."
+        );
+
+
+        await cargarProductos();
+
+
+      } catch (error) {
+
+
+        console.error(
+          error
+        );
+
+
+        alert(
+          "😭 No pudimos eliminar el producto."
+        );
 
       }
-
-
-      if (lista.length === 0) {
-
-        productsContainer.innerHTML = `
-
-          <div class="empty">
-
-            <h3>
-              🌷 No hay productos
-            </h3>
-
-            <p>
-              Puedes agregar uno
-              desde el botón
-              "Agregar producto".
-            </p>
-
-          </div>
-
-        `;
-
-        return;
-
-      }
-
-
-      lista.forEach(
-        function(producto) {
-
-          const tarjeta =
-            document.createElement(
-              "div"
-            );
-
-
-          tarjeta.className =
-            "product-card";
-
-
-          tarjeta.innerHTML = `
-
-            <div class="product-image">
-              🌷
-            </div>
-
-            <h3>
-              ${
-                producto.nombre ||
-                "Sin nombre"
-              }
-            </h3>
-
-            <p>
-              ${
-                producto.descripcion ||
-                "Sin descripción"
-              }
-            </p>
-
-            <p>
-              💰 ₡${
-                producto.precio || 0
-              }
-            </p>
-
-            <span class="status">
-
-              ${
-                producto.disponible
-                  ? "Disponible"
-                  : "No disponible"
-              }
-
-            </span>
-
-            <div class="actions">
-
-              <button class="edit">
-                ✏️ Editar
-              </button>
-
-              <button class="hide">
-                👁️ Ocultar
-              </button>
-
-              <button class="delete">
-                🗑️ Eliminar
-              </button>
-
-            </div>
-
-          `;
-
-
-          productsContainer
-            .appendChild(
-              tarjeta
-            );
-
-        }
-      );
 
     }
+
+
+
+    /* =========================
+       CATEGORÍAS
+    ========================= */
 
 
     document
@@ -1809,9 +1541,11 @@
       .forEach(
         function(boton) {
 
+
           boton.addEventListener(
             "click",
             function() {
+
 
               document
                 .querySelectorAll(
@@ -1820,10 +1554,9 @@
                 .forEach(
                   function(btn) {
 
-                    btn.classList
-                      .remove(
-                        "active"
-                      );
+                    btn.classList.remove(
+                      "active"
+                    );
 
                   }
                 );
@@ -1845,41 +1578,14 @@
       );
 
 
-    addProductButton.addEventListener(
-  "click",
-  function() {
 
-    productoEditando = null;
-
-    imagenActual = "";
-
-    modalTitle.textContent =
-      "🌷 Agregar producto";
-
-    productName.value = "";
-
-    productCategory.value = "ramos";
-
-    productPrice.value = "";
-
-    productDescription.value = "";
-
-    productAvailable.value = "true";
-
-    productImage.value = "";
-
-    imagePreview.style.display =
-      "none";
-
-    productModal.classList.add(
-      "active"
-    );
-
-  }
-);
+    /* =========================
+       INICIAR
+    ========================= */
 
 
     cargarProductos();
+
 
   </script>
 
