@@ -1369,84 +1369,461 @@
        JAVASCRIPT TEMPORAL
   ========================= -->
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+  import {
+    initializeApp
+  } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
   import {
     getFirestore,
     collection,
+    getDocs,
     addDoc,
     serverTimestamp
   } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
+
+  /* =========================
+     FIREBASE
+  ========================= */
+
   const firebaseConfig = {
-    apiKey: "AIzaSyA0redvM8Zg_UwUmhxvgt2zMpWFXwxMNK4",
-    authDomain: "ramitos-de-pipa.firebaseapp.com",
-    projectId: "ramitos-de-pipa",
-    storageBucket: "ramitos-de-pipa.firebasestorage.app",
-    messagingSenderId: "628847901109",
-    appId: "1:628847901109:web:4fb8b309b0eac146fc41fc",
-    measurementId: "G-40G6869742"
+
+    apiKey:
+      "AIzaSyA0redvM8Zg_UwUmhxvgt2zMpWFXwxMNK4",
+
+    authDomain:
+      "ramitos-de-pipa.firebaseapp.com",
+
+    projectId:
+      "ramitos-de-pipa",
+
+    storageBucket:
+      "ramitos-de-pipa.firebasestorage.app",
+
+    messagingSenderId:
+      "628847901109",
+
+    appId:
+      "1:628847901109:web:4fb8b309b0eac146fc41fc",
+
+    measurementId:
+      "G-40G6869742"
+
   };
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
 
-  const form = document.getElementById("personalizedForm");
+  const app =
+    initializeApp(firebaseConfig);
 
-  form.addEventListener("submit", async function(event) {
-    event.preventDefault();
 
-    const nombre = document.getElementById("nombre").value;
-    const telefono = document.getElementById("telefono").value;
-    const tipo = document.getElementById("tipo").value;
-    const idea = document.getElementById("idea").value;
+  const db =
+    getFirestore(app);
+
+
+  /* =========================
+     MOSTRAR PRODUCTOS
+  ========================= */
+
+  async function cargarProductos() {
 
     try {
-      await addDoc(collection(db, "solicitudes"), {
-        nombre: nombre,
-        telefono: telefono,
-        tipo: tipo,
-        idea: idea,
-        fecha: serverTimestamp()
-      });
 
-        const enviarWhatsApp = confirm(
-  "💗 ¡Tu solicitud fue enviada correctamente!\n\n" +
-  "📷 Si tienes una imagen de referencia, " +
-  "puedes enviarla ahora por WhatsApp."
-);
+      const snapshot =
+        await getDocs(
+          collection(
+            db,
+            "productos"
+          )
+        );
 
-if (enviarWhatsApp) {
-  const mensaje = encodeURIComponent(
-    "🌷 NUEVA SOLICITUD — RAMITOS DE PIPA 🌷\n\n" +
-    "👤 Nombre: " + nombre + "\n" +
-    "📱 Teléfono: " + telefono + "\n" +
-    "💐 Producto: " + tipo + "\n" +
-    "💭 Idea: " + idea + "\n\n" +
-    "📷 La imagen de referencia se enviará por este chat."
-  );
 
-  window.open(
-    "https://wa.me/50685053551?text=" + mensaje,
-    "_blank"
-  );
-}
+      const productos = [];
 
-      form.reset();
-      form.reset();
+
+      snapshot.forEach(
+        function(docSnapshot) {
+
+          productos.push({
+
+            id:
+              docSnapshot.id,
+
+            ...docSnapshot.data()
+
+          });
+
+        }
+      );
+
+
+      mostrarProductos(
+        productos
+      );
+
 
     } catch (error) {
-      console.error("Error:", error);
 
-      alert(
-        "😭 No pudimos enviar tu solicitud. " +
-        "Por favor intenta nuevamente."
+      console.error(
+        "Error al cargar productos:",
+        error
       );
+
     }
-  });
+
+  }
+
+
+  function mostrarProductos(
+    productos
+  ) {
+
+
+    const categorias = {
+
+      ramos:
+        document.querySelector(
+          "#ramos .products"
+        ),
+
+      flores:
+        document.querySelector(
+          "#flores .products"
+        ),
+
+      macetas:
+        document.querySelector(
+          "#macetas .products"
+        ),
+
+      llaveros:
+        document.querySelector(
+          "#llaveros .products"
+        ),
+
+      otro:
+        document.querySelector(
+          "#otros .products"
+        )
+
+    };
+
+
+    /*
+      Limpiamos solamente
+      los productos existentes.
+    */
+
+    Object.values(
+      categorias
+    ).forEach(
+      function(contenedor) {
+
+        if (contenedor) {
+
+          contenedor.innerHTML =
+            "";
+
+        }
+
+      }
+    );
+
+
+    productos
+      .filter(
+        function(producto) {
+
+          return (
+            producto.disponible === true
+          );
+
+        }
+      )
+      .forEach(
+        function(producto) {
+
+
+          const categoria =
+            producto.categoria ||
+            "otro";
+
+
+          const contenedor =
+            categorias[categoria];
+
+
+          if (!contenedor) {
+            return;
+          }
+
+
+          const tarjeta =
+            document.createElement(
+              "div"
+            );
+
+
+          tarjeta.className =
+            "product";
+
+
+          let imagenHTML = "";
+
+
+          if (
+            producto.imagenUrl
+          ) {
+
+            imagenHTML = `
+
+              <img
+                src="${producto.imagenUrl}"
+                alt="${
+                  producto.nombre ||
+                  "Producto"
+                }"
+                style="
+                  width:100%;
+                  height:100%;
+                  object-fit:cover;
+                  border-radius:inherit;
+                "
+              >
+
+            `;
+
+          } else {
+
+            imagenHTML = `
+
+              <div
+                style="
+                  width:100%;
+                  height:100%;
+                  display:flex;
+                  align-items:center;
+                  justify-content:center;
+                  font-size:50px;
+                "
+              >
+                🌷
+              </div>
+
+            `;
+
+          }
+
+
+          tarjeta.innerHTML = `
+
+            <div class="product-image">
+
+              ${imagenHTML}
+
+            </div>
+
+
+            <div class="product-info">
+
+              <h3>
+                ${
+                  producto.nombre ||
+                  "Producto"
+                }
+              </h3>
+
+
+              <p>
+                ${
+                  producto.descripcion ||
+                  "Producto hecho a mano."
+                }
+              </p>
+
+
+              <span class="price">
+
+                ₡${
+                  Number(
+                    producto.precio || 0
+                  ).toLocaleString(
+                    "es-CR"
+                  )
+                }
+
+              </span>
+
+            </div>
+
+          `;
+
+
+          contenedor.appendChild(
+            tarjeta
+          );
+
+        }
+      );
+
+  }
+
+
+  /* =========================
+     SOLICITUDES PERSONALIZADAS
+  ========================= */
+
+  const form =
+    document.getElementById(
+      "personalizedForm"
+    );
+
+
+  if (form) {
+
+    form.addEventListener(
+      "submit",
+      async function(event) {
+
+        event.preventDefault();
+
+
+        const nombre =
+          document.getElementById(
+            "nombre"
+          ).value;
+
+
+        const telefono =
+          document.getElementById(
+            "telefono"
+          ).value;
+
+
+        const tipo =
+          document.getElementById(
+            "tipo"
+          ).value;
+
+
+        const idea =
+          document.getElementById(
+            "idea"
+          ).value;
+
+
+        try {
+
+          await addDoc(
+            collection(
+              db,
+              "solicitudes"
+            ),
+            {
+
+              nombre:
+                nombre,
+
+              telefono:
+                telefono,
+
+              tipo:
+                tipo,
+
+              idea:
+                idea,
+
+              fecha:
+                serverTimestamp()
+
+            }
+          );
+
+
+          const enviarWhatsApp =
+            confirm(
+
+              "💗 ¡Tu solicitud fue enviada correctamente!\n\n" +
+
+              "📷 Si tienes una imagen de referencia, " +
+
+              "puedes enviarla ahora por WhatsApp."
+
+            );
+
+
+          if (enviarWhatsApp) {
+
+
+            const mensaje =
+              encodeURIComponent(
+
+                "🌷 NUEVA SOLICITUD — RAMITOS DE PIPA 🌷\n\n" +
+
+                "👤 Nombre: " +
+                nombre +
+                "\n" +
+
+                "📱 Teléfono: " +
+                telefono +
+                "\n" +
+
+                "💐 Producto: " +
+                tipo +
+                "\n" +
+
+                "💭 Idea: " +
+                idea +
+                "\n\n" +
+
+                "📷 La imagen de referencia se enviará por este chat."
+
+              );
+
+
+            window.open(
+
+              "https://wa.me/50685053551?text=" +
+              mensaje,
+
+              "_blank"
+
+            );
+
+          }
+
+
+          form.reset();
+
+
+        } catch (error) {
+
+          console.error(
+            "Error:",
+            error
+          );
+
+
+          alert(
+
+            "😭 No pudimos enviar tu solicitud. " +
+
+            "Por favor intenta nuevamente."
+
+          );
+
+        }
+
+      }
+    );
+
+  }
+
+
+  /* =========================
+     INICIAR
+  ========================= */
+
+  cargarProductos();
+
 </script>
- 
-
-
-</body>
-
-</html>
