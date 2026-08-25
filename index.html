@@ -1566,7 +1566,28 @@
 
           tarjeta.className =
             "product";
+tarjeta.style.cursor =
+  "pointer";
 
+tarjeta.addEventListener(
+  "click",
+  function() {
+
+    alert(
+      "🌷 " +
+      (producto.nombre || "Producto") +
+      "\n\n" +
+      (producto.descripcion ||
+        "Producto hecho a mano.") +
+      "\n\n" +
+      "💗 Precio: ₡" +
+      Number(
+        producto.precio || 0
+      ).toLocaleString("es-CR")
+    );
+
+  }
+);
 
           let imagenHTML = "";
 
